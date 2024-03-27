@@ -1,7 +1,9 @@
 import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom'
-import { GlobalContext } from '../context/Context';
+import { GlobalContext } from '../../context/Context';
 import { nanoid } from 'nanoid';
+
+import './nav.scss'
 
 const Nav = () => {
     const { itemNumbers } = useContext(GlobalContext)
@@ -13,13 +15,13 @@ const Nav = () => {
             {
                 id: nanoid,
                 text: "Home",
-                icon: '../src/assets/imgs/home.svg',
+                icon: 'home.svg',
                 href: '/'
             },
             {
                 id: nanoid,
                 text: "Admin",
-                icon: '../src/assets/imgs/admin.svg',
+                icon: 'admin.svg',
                 href: '/admin'
             },
         ],
@@ -27,14 +29,14 @@ const Nav = () => {
             {
                 id: nanoid,
                 text: "Cart",
-                icon: '../src/assets/imgs/cart.svg',
+                icon: 'cart.svg',
                 href: '/cart',
                 count: itemNumbers,
             },
             {
                 id: nanoid,
                 text: "Profile",
-                icon: '../src/assets/imgs/profile.svg',
+                icon: 'profile.svg',
                 href: '/profile/dashboard'
             }
 
@@ -50,12 +52,12 @@ const Nav = () => {
                 <span></span>
             </div>
             <div className={open ? 'menu opened-menu' : "menu"}>
-                {navItems.map((element) => (
-                    <ul>
+                {navItems.map((element, index) => (
+                    <ul key={index}>
                         {element.map(item => (
                             <NavLink to={item.href}>
-                                <li key={item.id}>
-                                    <img src={item.icon} alt="" />
+                                <li>
+                                    <img src={`./src/assets/imgs/${item.icon}`} alt="" />
                                     {item.count && <span className='counter'>{item.count}</span>}
                                     <span>{item.text}</span>
                                 </li>

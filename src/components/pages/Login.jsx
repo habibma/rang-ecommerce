@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/Context';
 import { Link } from 'react-router-dom';
-import Header from '../Header';
-import Footer from '../Footer';
-import FormInput from '../FormInput';
-import Button from '../Button';
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
+import FormInput from '../input/FormInput';
+import Button from '../button/Button';
 
 const Login = () => {
 

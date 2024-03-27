@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../context/Context";
 import { useNavigate } from "react-router-dom";
-import Header from "../Header";
-import Footer from "../Footer";
-import Button from "../Button";
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
+import Button from "../button/Button";
 
 const Checkout = () => {
 
@@ -18,7 +18,6 @@ const Checkout = () => {
 
     const hadleSubmit = event => {
         event.preventDefault();
-        // console.log(input);
         setInput({
             iban: "",
             bic: ""

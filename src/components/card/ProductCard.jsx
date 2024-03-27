@@ -1,7 +1,8 @@
-import { useContext } from "react";
-import { GlobalContext } from "../context/Context";
 import { Link } from "react-router-dom";
-import Button from "./Button";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/Context";
+import Button from "../button/Button";
+import './card.scss'
 
 const ProductCard = (props) => {
 
@@ -16,7 +17,7 @@ const ProductCard = (props) => {
                 <img src={props.image} alt='' />
             </div>
             <Link to={`./product/${props.id}`}><h4>{props.title}</h4></Link>
-            <Button type="btn-primary" text={itemIndex === -1 ? "Add to Cart" : "Added"} onClick={() => handleCartItems({ type: "ADD", product: props })}/>
+            <Button type="btn-primary" text={itemIndex === -1 ? "Add to Cart" : "Added"} onClick={() => handleCartItems({ type: "ADD", product: props })} />
         </div>
     )
 }

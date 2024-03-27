@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
-import './profile.scss'
 import { Dashboard, Orders, Setting } from '../UserAccount';
 import UserInfo from '../UserInfo';
 import PasswordChange from '../PasswordChange';
 import Login from '../pages/Login';
-import Header from '../Header';
-import Footer from '../Footer';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
+import './profile.scss'
 
 const UserProfile = () => {
 

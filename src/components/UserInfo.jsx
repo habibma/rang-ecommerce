@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import FormInput from "./FormInput";
+import FormInput from "./input/FormInput";
+import Button from "./button/Button";
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword, signOut, updateProfile, updatePassword } from "firebase/auth";
-import Button from "./Button";
 
 const UserInfo = () => {
 

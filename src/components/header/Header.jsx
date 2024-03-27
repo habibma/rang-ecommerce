@@ -1,4 +1,5 @@
-import Nav from "./Nav";
+import Nav from '../navbar/Nav'
+import './header.scss'
 
 const Header = () => {
     return (

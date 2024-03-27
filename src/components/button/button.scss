@@ -1,0 +1,37 @@
+@import './../../assets/css/variables.scss';
+
+.button {
+    padding: 0.5rem 20px;
+    margin: 15px initial;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: none;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease-in-out;
+
+    &:focus,
+    &:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+    }
+
+    &.btn-primary {
+        background-color: $primary-color; //Terracotta from my palette
+        color: #fff;
+
+        &:hover {
+            background-color: #D76B4A; // Slightly darker terracotta on hover
+        }
+    }
+
+    &.btn-secondary {
+        background-color: #F5F5DC;
+        color: #2F4F4F;
+
+        &:hover {
+            background-color: #D9D9DC; //lightly darker on hover
+        }
+    }
+}

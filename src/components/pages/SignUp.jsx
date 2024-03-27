@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
+import FormInput from '../input/FormInput';
+import Button from '../button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import Header from '../Header';
-import Footer from '../Footer';
-import FormInput from '../FormInput';
-import Button from '../Button';
-
 
 const SignUp = () => {
 

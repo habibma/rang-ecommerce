@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import ProductCard from '../ProductCard';
-import Header from '../Header';
-import Footer from '../Footer';
+import ProductCard from '../card/ProductCard';
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
 
 const Home = () => {
 

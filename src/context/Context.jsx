@@ -14,7 +14,7 @@ const reducer = (state, action) => {
             if (itemIndex === -1) { // in case of lack of recived product
                 newArray.push({ ...action.product, quantity: 1 }); //adding quantity to the product objet due to soving the bug which show NaN in Total Price
             }
-            console.log(newArray)
+            // console.log(newArray)
             return newArray;
         case "INCREMENT":
             newArray = newArray.map(item => {

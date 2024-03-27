@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
-import Header from '../Header';
-import Footer from '../Footer';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
 
 const ProductDetails = () => {
 
@@ -23,33 +23,33 @@ const ProductDetails = () => {
 
   return (
     <>
-    <Header />
-    <div className='product-page'>
-      <section className='row'>
-        <div className='product-page--img-frame'><img src={product.image} alt={product.title} /></div>
-      </section>
-      <section className='row'>
-        <div className='product-page--desc'>
-          <small>{`category / ${product.category}`}</small>
-          <div>
-            <h2 className='product-title'>{product.title}</h2>
-            <p>{product.description}</p>
+      <Header />
+      <div className='product-page'>
+        <section>
+          <div className='product-page--img-frame'><img src={product.image} alt={product.title} /></div>
+        </section>
+        <section>
+          <div className='product-page--desc'>
+            <small>{`category / ${product.category}`}</small>
+            <div>
+              <h2 className='product-title'>{product.title}</h2>
+              <p>{product.description}</p>
+            </div>
+            <div className='buy-section'>
+              <div><b>Price: </b>${product.price}</div>
+              <small>Pricing incl. VAT and Shipping</small>
+              <button
+                className='button btn-secondary'
+                onClick={() => handleCartItems({ type: "ADD", product: product })}
+              >
+                {itemIndex === -1 ? "Add to Cart" : "Added"}
+              </button>
+              <button className='button'>Buy Now</button>
+            </div>
           </div>
-          <div className='buy-section'>
-            <div><b>Price: </b>${product.price}</div>
-            <p>Pricing incl. VAT and Shipping</p>
-            <button
-              className='button btn-secondary'
-              onClick={() => handleCartItems({ type: "ADD", product: product })}
-            >
-              {itemIndex === -1 ? "Add to Cart" : "Added"}
-            </button>
-            <button className='button'>Buy Now</button>
-          </div>
-        </div>
-      </section>
-    </div>
-    <Footer />
+        </section>
+      </div>
+      <Footer />
     </>
   )
 }

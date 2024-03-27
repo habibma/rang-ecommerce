@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import './input.scss'
+
 const FormInput = (props) => {
     const { id, label, onChange, errorMessage, ...otherProps } = props
 
