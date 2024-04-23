@@ -42,7 +42,7 @@ const Login = () => {
                     {fileds.map(field => (
                         <FormInput key={field.id} {...field} value={signInInputs[field.name]} onChange={handleSignIn} />
                     ))}
-                    <Button type='btn-primary' text={isLoggedIn ? 'Log out' : 'Log in'} />
+                    <Button type='btn-primary'>{isLoggedIn ? 'Log out' : 'Log in'}</Button>
                     <small>New user? <Link to='/signup'>Create an account</Link></small>
                 </form>
                 <p className='fieldError'>{error}</p>

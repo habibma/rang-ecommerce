@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import Button from '../button/Button';
 
 const ProductDetails = () => {
 
@@ -38,12 +39,12 @@ const ProductDetails = () => {
             <div className='buy-section'>
               <div><b>Price: </b>${product.price}</div>
               <small>Pricing incl. VAT and Shipping</small>
-              <button
-                className='button btn-secondary'
+              <Button
+                type='btn-secondary'
                 onClick={() => handleCartItems({ type: "ADD", product: product })}
               >
                 {itemIndex === -1 ? "Add to Cart" : "Added"}
-              </button>
+              </Button>
               <button className='button'>Buy Now</button>
             </div>
           </div>

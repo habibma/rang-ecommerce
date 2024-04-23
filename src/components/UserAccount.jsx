@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { GlobalContext } from "../context/Context"
+import Button from "./button/Button"
 
 export const Dashboard = () => {
     return (
@@ -52,7 +53,7 @@ export const Setting = () => {
     return (
         <div className="row">
             <h3 className="pro-heading">Setting</h3>
-            <button className="button btn-primary" onClick={handleLogOut}>Log Out</button>
+            <Button type="btn-primary" onClick={handleLogOut}>Log Out</Button>
         </div>
     )
 }
