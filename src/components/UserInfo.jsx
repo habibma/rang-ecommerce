@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import FormInput from "./input/FormInput";
 import Button from "./button/Button";
 import { auth } from '../firebase'
-import { signInWithEmailAndPassword, signOut, updateProfile, updatePassword } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
+import { Avatar } from "@mui/material";
 
 const UserInfo = () => {
 
@@ -127,6 +128,9 @@ const UserInfo = () => {
     return (
         <div className="row">
             <h3 className="pro-heading">Personal Information</h3>
+            <div className="profile-picture">
+                <Avatar>{user.displayName[0]}</Avatar>
+            </div>
             <form className='form' onSubmit={handleSubmit}>
                 <fieldset className="fieldset">
                     <legend>Identity</legend>
