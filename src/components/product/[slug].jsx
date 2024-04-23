@@ -40,7 +40,7 @@ const ProductDetails = () => {
               <div><b>Price: </b>${product.price}</div>
               <small>Pricing incl. VAT and Shipping</small>
               <Button
-                type='btn-secondary'
+                type='secondary'
                 onClick={() => handleCartItems({ type: "ADD", product: product })}
               >
                 {itemIndex === -1 ? "Add to Cart" : "Added"}

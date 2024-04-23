@@ -71,7 +71,7 @@ const Checkout = () => {
                         value={input.bic}
                         required
                     ></input>
-                    <Button type="btn-primary">Submit</Button>
+                    <Button type="primary">Submit</Button>
                 </form>
             </div>
             <Footer />

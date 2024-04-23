@@ -140,7 +140,7 @@ const UserInfo = () => {
                         <FormInput key={filed.id} {...filed} value={inputs[filed.name]} onChange={handleChange} />
                     ))}
                 </fieldset>
-                <Button type="btn-secondary">Save Changes</Button>
+                <Button type="secondary">Save Changes</Button>
             </form>
         </div >
     )

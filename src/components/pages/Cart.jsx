@@ -51,7 +51,7 @@ const Cart = () => {
                         ))}
                     </div>
                     <div><b>Total:</b> <span>{cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)} $</span></div>
-                    <Link to="/checkout"><Button type="btn-primary">Checkout</Button></Link>
+                    <Link to="/checkout"><Button type="primary">Checkout</Button></Link>
                 </section>
             }
             <Footer />

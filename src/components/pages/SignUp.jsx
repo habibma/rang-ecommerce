@@ -112,7 +112,7 @@ const SignUp = () => {
                     {fields.map(field => (
                         <FormInput key={field.id} {...field} value={inputs[field.name]} onChange={handleChange} />
                     ))}
-                    <Button type='btn-primary'>Submit</Button>
+                    <Button type='primary'>Submit</Button>
                     <small>Already have an account? <Link to='/login'>Log In</Link></small>
                 </form>
                 <p className='fieldError'>{error}</p>

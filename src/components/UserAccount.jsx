@@ -53,7 +53,7 @@ export const Setting = () => {
     return (
         <div className="row">
             <h3 className="pro-heading">Setting</h3>
-            <Button type="btn-primary" onClick={handleLogOut}>Log Out</Button>
+            <Button type="primary" onClick={handleLogOut}>Log Out</Button>
         </div>
     )
 }

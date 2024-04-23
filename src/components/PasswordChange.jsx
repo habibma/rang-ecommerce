@@ -82,7 +82,7 @@ const PasswordChange = () => {
                     {fields.map(field => (
                         <FormInput key={field.id} {...field} value={password[field.name]} onChange={handleChange} />
                     ))}
-                    <Button type="btn-primary">Submit</Button>
+                    <Button type="primary">Submit</Button>
                 </form>
                 <p className='fieldError'>{passwordError}</p>
             </div>

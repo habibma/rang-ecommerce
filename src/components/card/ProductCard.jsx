@@ -17,7 +17,7 @@ const ProductCard = (props) => {
                 <img src={props.image} alt='' />
             </div>
             <Link to={`./product/${props.id}`}><h4>{props.title}</h4></Link>
-            <Button type="btn-primary"onClick={() => handleCartItems({ type: "ADD", product: props })}>{itemIndex === -1 ? "Add to Cart" : "Added"}</Button>
+            <Button type="primary" onClick={() => handleCartItems({ type: "ADD", product: props })}>{itemIndex === -1 ? "Add to Cart" : "Added"}</Button>
         </div>
     )
 }
