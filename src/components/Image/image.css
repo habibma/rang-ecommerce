@@ -1,0 +1,33 @@
+.image {
+  object-fit: cover;
+}
+
+.image-thumbnail {
+  /* Styles for thumbnail images */
+  max-width: 80px;
+  height: auto;
+}
+
+.image-small {
+  /* Styles for small images */
+  max-width: 150px;
+  height: auto;
+}
+
+.image-medium {
+  /* Styles for medium images */
+  max-width: 400px;
+  height: auto;
+}
+
+.image-large {
+  /* Styles for large images */
+  max-width: 800px;
+  height: auto;
+}
+
+.image-extra-large {
+  /* Styles for extra large images */
+  max-width: 1200px;
+  height: auto;
+}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import Button from "../button/Button";
+import Image from "../Image/Image";
 
 const Cart = () => {
     const { cartItems, handleCartItems } = useContext(GlobalContext);
@@ -18,7 +19,7 @@ const Cart = () => {
                     <div className="cart">
                         {cartItems.map(item => (
                             <div key={item.id} className="cart-item">
-                                <img className="thumbnail" src={item.image}></img>
+                                <Image className="thumbnail" size="thumbnail" src={item.image} alt='' />
                                 <h4>{item.title}</h4>
                                 <span
                                     className="close"

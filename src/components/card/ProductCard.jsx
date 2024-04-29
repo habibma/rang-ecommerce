@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../context/Context";
 import Button from "../button/Button";
 import './card.scss'
+import Image from "../Image/Image";
 
 const ProductCard = ({children}) => {
 
@@ -14,7 +15,7 @@ const ProductCard = ({children}) => {
     return (
         <div className="product-card">
             <div className='product-card--frame'>
-                <img src={children.image} alt='' />
+                <Image src={children.image} alt='' size="small"/>
             </div>
             <Link to={`./product/${children.id}`}><h4>{children.title}</h4></Link>
             <Button type="primary" onClick={() => handleCartItems({ type: "ADD", product: children })}>{itemIndex === -1 ? "Add to Cart" : "Added"}</Button>
