@@ -48,7 +48,7 @@ const Home = () => {
                 </select> */}
                 </div>
                 <div className="products-list">
-                    {products.map(product => <ProductCard key={product.id} {...product} />)}
+                    {products.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
                 </div>
             </section>
             <Footer />
