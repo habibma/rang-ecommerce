@@ -57,7 +57,7 @@ const Nav = () => {
                         {element.map(item => (
                             <NavLink to={item.href}>
                                 <li>
-                                    <img src={`./${item.icon}.svg`} alt="" />
+                                    <img src={`/${item.icon}.svg`} alt="" />
                                     {item.count && <span className='counter'>{item.count}</span>}
                                     <span>{item.text}</span>
                                 </li>
