@@ -2,10 +2,10 @@ import React from 'react'
 import './menu.scss'
 import Toggle from '../../context/Toggle'
 
-const Menu = ({ children }) => {
+const Menu = ({ children, onclick }) => {
 
     return (
-        <Toggle>
+        <Toggle onToggle={onclick}>
             <div className="menu">
                 {children}
             </div>

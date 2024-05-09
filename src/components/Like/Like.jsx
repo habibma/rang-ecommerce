@@ -2,9 +2,9 @@ import React from 'react'
 import Toggle from '../../context/Toggle'
 import './like.css'
 
-const Like = () => {
+const Like = ({ onChange }) => {
     return (
-        <Toggle>
+        <Toggle onToggle={onChange}>
             <Toggle.Button>
                 <Toggle.On>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" strokeWidth={1.5} stroke="red" className="like">
