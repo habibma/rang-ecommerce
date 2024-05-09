@@ -1,0 +1,18 @@
+.menu {
+    .menu-dropdown {
+        position: absolute;
+        border: 1px solid rgba($color: #5a5a5a, $alpha: 0.2);
+        border-radius: 2px;
+
+        .menu-item {
+            background-color: #fff;
+            padding: 5px 1em;
+            font-size: 14px;
+
+            &:hover {
+                background-color: #eee;
+                cursor: pointer;
+            }
+        }
+    }
+}

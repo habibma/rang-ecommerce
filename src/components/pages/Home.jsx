@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ProductCard from '../card/ProductCard';
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import Menu from '../Menu/index';
 
 const Home = () => {
 
@@ -46,6 +47,13 @@ const Home = () => {
                     {/* <select defaultValue="">
                     <option>Price</option>
                 </select> */}
+                    <Menu>
+                        <Menu.Button>Price</Menu.Button>
+                            <Menu.Dropdown>
+                                <Menu.Item>cheap</Menu.Item>
+                                <Menu.Item>expensive</Menu.Item>
+                            </Menu.Dropdown>
+                    </Menu>
                 </div>
                 <div className="products-list">
                     {products.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
