@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { ToggleContext } from './Toggle'
 
 const ToggleButton = ({ children }) => {
-    const { toggle } = useContext(ToggleContext)
+    const { toggle, setOn } = useContext(ToggleContext)
     return (
-        <div onClick={toggle} onBlur={toggle}>{children}</div>
+        <div onClick={toggle} onBlur={() => setOn(false)}>{children}</div>
     )
 }
 

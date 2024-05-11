@@ -14,7 +14,7 @@ const Toggle = ({ children, onToggle }) => {
         onToggle();
     }, [on])
 
-    const value = { on, toggle }
+    const value = { on, toggle, setOn }
 
     return (
         <ToggleContext.Provider value={value}>
