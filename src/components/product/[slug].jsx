@@ -4,6 +4,7 @@ import { GlobalContext } from '../../context/Context';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Button from '../button/Button';
+import Like from '../Like/Like';
 
 const ProductDetails = () => {
 
@@ -26,8 +27,11 @@ const ProductDetails = () => {
     <>
       <Header />
       <div className='product-page'>
-        <section>
-          <div className='product-page--img-frame'><img src={product.image} alt={product.title} /></div>
+        <section className='product-page--img-frame'>
+          <img src={product.image} alt={product.title} />
+          <div className="like-container">
+            <Like onChange={() => console.log("Added to favorite list")} />
+          </div>
         </section>
         <section>
           <div className='product-page--desc'>
