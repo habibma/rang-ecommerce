@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState, useEffect } from "react";
+import React, { createContext, useReducer, useState, useEffect, useRef } from "react";
 import { nanoid } from 'nanoid';
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword, signOut, updateProfile, updatePassword } from "firebase/auth";
@@ -71,13 +71,16 @@ const GlobalState = ({ children }) => {
             })
         })
     }
+    const passwordRef = useRef(null)
+    const usernameRef = useRef(null)
 
-    const [currentUser, setCurrentUser] = useState({user: "", isLoggedIn: false })
+    const [currentUser, setCurrentUser] = useState({ user: "", isLoggedIn: false })
     const [error, setError] = useState();
 
     const handleSubmit = event => {
         event.preventDefault();
-        setSignIninputs({ username: "", password: "" })
+        // setSignIninputs({ username: "", password: "" })
+
 
         //firebase check
         signInWithEmailAndPassword(auth, signInInputs.username, signInInputs.password)
@@ -91,7 +94,12 @@ const GlobalState = ({ children }) => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-
+                if (errorCode === "auth/invalid-email") {
+                    usernameRef.current.focus();
+                }
+                if (errorCode === "auth/missing-password") {
+                    passwordRef.current.focus();
+                }
                 setError(errorMessage)
             });
     }
@@ -139,7 +147,9 @@ const GlobalState = ({ children }) => {
         handleLogOut,
         currentUser,
         setCurrentUser,
-        error
+        error,
+        usernameRef,
+        passwordRef
     }
 
     return (

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 
 import './input.scss'
 
-const FormInput = (props) => {
+const FormInput = forwardRef((props, ref) => {
     const { id, label, onChange, errorMessage, ...otherProps } = props
 
     const [focused, setFocused] = useState(false)
@@ -14,6 +14,7 @@ const FormInput = (props) => {
                 id={id}
                 className='input'
                 {...otherProps}
+                ref={ref}
                 onChange={onChange}
                 onBlur={() => setFocused(true)}
                 onFocus={() => otherProps.name === 'confirmPassword' && setFocused(true)}
@@ -22,6 +23,6 @@ const FormInput = (props) => {
             <span role="alert">{errorMessage}</span>
         </div>
     )
-}
+})
 
 export default FormInput
