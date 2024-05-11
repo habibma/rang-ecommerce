@@ -13,13 +13,13 @@ const Nav = () => {
     const navItems = [
         [
             {
-                id: nanoid,
+                id: nanoid(),
                 text: "Home",
                 icon: 'home',
                 href: '/'
             },
             {
-                id: nanoid,
+                id: nanoid(),
                 text: "Admin",
                 icon: 'admin',
                 href: '/admin'
@@ -27,14 +27,14 @@ const Nav = () => {
         ],
         [
             {
-                id: nanoid,
+                id: nanoid(),
                 text: "Cart",
                 icon: 'cart',
                 href: '/cart',
                 count: itemNumbers,
             },
             {
-                id: nanoid,
+                id: nanoid(),
                 text: "Profile",
                 icon: 'profile',
                 href: '/profile/dashboard'
@@ -55,7 +55,7 @@ const Nav = () => {
                 {navItems.map((element, index) => (
                     <ul key={index}>
                         {element.map(item => (
-                            <NavLink to={item.href}>
+                            <NavLink to={item.href} key={item.id}>
                                 <li>
                                     <img src={`/${item.icon}.svg`} alt="" />
                                     {item.count && <span className='counter'>{item.count}</span>}
