@@ -47,7 +47,7 @@ const Home = () => {
                     {/* <select defaultValue="">
                     <option>Price</option>
                 </select> */}
-                    <Menu onClick={() => console.log("price clicked!")}>
+                    <Menu onSelect={() => console.log("price clicked!")}>
                         <Menu.Button>Price</Menu.Button>
                             <Menu.Dropdown>
                                 <Menu.Item>cheap</Menu.Item>
