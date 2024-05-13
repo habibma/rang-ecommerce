@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './menu.scss'
-import Toggle from '../../context/Toggle'
+import MenuState from '../../context/MenuContext'
 
 const Menu = ({ children, onSelect }) => {
 
     return (
-        <Toggle onToggle={onSelect}>
+        <MenuState>
             <div className="menu">
                 {children}
             </div>
-        </Toggle>
+        </MenuState>
     )
 }
 

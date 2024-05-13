@@ -1,16 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Toggle from '../../context/Toggle'
+import { MenuContext } from '../../context/MenuContext';
 
 const MenuDropdown = ({ children }) => {
 
-  return (
-    <Toggle.Display>
-      {on => {
-        if (on) return <div className='menu-dropdown'>{children}</div>
-      }
-      }
-    </Toggle.Display>
-  )
+  const { open } = useContext(MenuContext);
+
+  return open && <div className='menu-dropdown'>{children}</div>
 }
 
 export default MenuDropdown
