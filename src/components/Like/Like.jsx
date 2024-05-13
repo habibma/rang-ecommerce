@@ -4,7 +4,7 @@ import useToggle from '../../hooks/useToggle'
 
 const Like = ({ onChange }) => {
 
-    const [on, onToggle] = useToggle()
+    const [on, onToggle] = useToggle({onToggle: onChange})
 
     return (
         <div onClick={onToggle}>
