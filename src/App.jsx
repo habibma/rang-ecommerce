@@ -8,6 +8,7 @@ import Login from "./components/pages/Login";
 import ProductDetails from './components/product/[slug]';
 import UserProfile from './components/user/[slug]';
 import SignUp from "./components/pages/SignUp";
+import FavoriteList from "./components/FavoriteList";
 import Admin from "./components/admin/pages/Admin";
 
 import Navbar from "./components/admin/Navbar";
@@ -56,6 +57,7 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="products/:id" element={<Product />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="favorites" element={<FavoriteList />} />
         </Route>
       </Routes>
     </div>

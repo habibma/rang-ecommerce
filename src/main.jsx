@@ -6,11 +6,11 @@ import './index.scss'
 import GlobalState from './context/Context';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  //<React.StrictMode>
     <BrowserRouter>
       <GlobalState>
         <App />
       </GlobalState>
     </BrowserRouter>
-  </React.StrictMode>,
+  //</React.StrictMode>,
 )

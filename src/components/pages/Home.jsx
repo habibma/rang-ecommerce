@@ -1,33 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import ProductCard from '../card/ProductCard';
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import Menu from '../Menu/index';
+import { GlobalContext } from '../../context/Context';
 
 const Home = () => {
 
-    const [products, setProducts] = useState([]);
-
-    const [select, setSelect] = useState("")
-
-    // Fetching products data from fakestoreapi
-    useEffect(() => {
-        try {
-            fetch(`https://fakestoreapi.com/products/${select && "category/" + select}`)
-                .then(response => response.json())
-                .then(data => setProducts(() => {
-                    return data.map(item => {
-                        return {
-                            ...item,
-                            quantity: 1
-                        }
-                    })
-                }));
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }, [select]);
+    const { products, setSelect, select } = useContext(GlobalContext);
 
     return (
         <>
@@ -49,10 +29,10 @@ const Home = () => {
                 </select> */}
                     <Menu onOpen={() => console.log("price clicked!")}>
                         <Menu.Button>Price</Menu.Button>
-                            <Menu.Dropdown>
-                                <Menu.Item>cheap</Menu.Item>
-                                <Menu.Item>expensive</Menu.Item>
-                            </Menu.Dropdown>
+                        <Menu.Dropdown>
+                            <Menu.Item>cheap</Menu.Item>
+                            <Menu.Item>expensive</Menu.Item>
+                        </Menu.Dropdown>
                     </Menu>
                 </div>
                 <div className="products-list">

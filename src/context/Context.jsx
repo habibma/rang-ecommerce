@@ -10,13 +10,14 @@ const reducer = (state, action) => {
     let newArray = [...state]
     const itemIndex = newArray.findIndex(item => item.id === action.product.id) // to find the index of recieved action object's product within current state
     switch (action.type) {
-        case "ADD":
+        case "ADD": {
             if (itemIndex === -1) { // in case of lack of recived product
                 newArray.push({ ...action.product, quantity: 1 }); //adding quantity to the product objet due to soving the bug which show NaN in Total Price
             }
             // console.log(newArray)
             return newArray;
-        case "INCREMENT":
+        }
+        case "INCREMENT": {
             newArray = newArray.map(item => {
                 if (item.id === action.product.id) {
                     return { ...item, quantity: item.quantity ? item.quantity + 1 : 1 }
@@ -24,7 +25,8 @@ const reducer = (state, action) => {
                 return item;
             });
             return newArray;
-        case "DECREMENT":
+        }
+        case "DECREMENT": {
             newArray = newArray.map(item => {
                 if (item.id === action.product.id) { //the quantity of the very proctuct is decremented not all available in cart
                     return { ...item, quantity: item.quantity > 0 ? item.quantity - 1 : 0 }
@@ -32,20 +34,50 @@ const reducer = (state, action) => {
                 return item;
             });
             return newArray;
-        case "REMOVE":
+        }
+        case "REMOVE": {
+
             newArray.splice(itemIndex, 1);
             return newArray;
-        case "CLEAN":
+        }
+        case "CLEAN": {
             newArray = [];
             return newArray;
-        default:
+        }
+        default: {
             return state;
+        }
     }
 };
 
 const GlobalState = ({ children }) => {
 
     const navigate = useNavigate();
+
+
+    // Products Page
+    const [products, setProducts] = useState([]);
+
+    const [select, setSelect] = useState("")
+
+    // Fetching products data from fakestoreapi
+    useEffect(() => {
+        try {
+            fetch(`https://fakestoreapi.com/products/${select && "category/" + select}`)
+                .then(response => response.json())
+                .then(data => setProducts(() => {
+                    return data.map(item => {
+                        return {
+                            ...item,
+                            quantity: 1
+                        }
+                    })
+                }));
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }, []);
 
 
     // Cart page and product
@@ -122,6 +154,16 @@ const GlobalState = ({ children }) => {
         });
     };
 
+    // Favorite List
+
+    const [favorites, setFavorites] = useReducer(reducer, [])
+
+    const handleFavorites = input => {
+        setFavorites({ type: input.type, product: input.product })
+        console.log('added to favorite list');
+
+    }
+
 
     // Setting Page
     const handleLogOut = () => {
@@ -149,7 +191,12 @@ const GlobalState = ({ children }) => {
         setCurrentUser,
         error,
         usernameRef,
-        passwordRef
+        passwordRef,
+        favorites,
+        handleFavorites,
+        products,
+        select,
+        setSelect
     }
 
     return (

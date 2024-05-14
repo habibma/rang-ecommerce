@@ -5,6 +5,7 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Button from '../button/Button';
 import Like from '../Like/Like';
+import useEffectOnUpdate from '../../hooks/useEffectOnUpdate';
 
 const ProductDetails = () => {
 
@@ -14,7 +15,7 @@ const ProductDetails = () => {
   const { id } = useParams()
 
   // Fetching product data from fakestoreapi
-  useEffect(() => {
+  useEffectOnUpdate(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then(response => response.json())
       .then(data => setProduct(data));
