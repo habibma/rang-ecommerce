@@ -85,7 +85,7 @@ const GlobalState = ({ children }) => {
         catch (error) {
             console.log(error)
         }
-    }, []);
+    }, [select]);
 
 
     // Cart page and product
@@ -153,6 +153,7 @@ const GlobalState = ({ children }) => {
             const newArray = [...prevState]
             newArray.push({
                 orderID: nanoid(),
+                //details: cartItems.map(item => <li>{item.title}</li>),
                 date: Date().toString(),
                 status: "on it's way",
                 price: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
@@ -168,8 +169,6 @@ const GlobalState = ({ children }) => {
 
     const handleFavorites = input => {
         setFavorites({ type: input.type, product: input.product })
-        console.log(favorites);
-
     }
 
 

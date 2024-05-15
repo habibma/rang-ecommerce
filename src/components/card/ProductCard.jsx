@@ -8,10 +8,16 @@ import Image from "../Image/Image";
 
 const ProductCard = ({ children }) => {
 
-    const { cartItems, handleCartItems, handleFavorites } = useContext(GlobalContext);
+    const { cartItems, handleCartItems, handleFavorites, favorites } = useContext(GlobalContext);
 
     // to find the index of product inside the cart items array
     const itemIndex = cartItems.findIndex(item => item.id === children.id)
+    // console.log(itemIndex);
+
+
+    // to find the index of product inside the favorite list
+    const favIndex = favorites.findIndex(item => item.id === children.id)
+    // console.log(favIndex);
 
     return (
         <div className="product-card">
@@ -21,7 +27,7 @@ const ProductCard = ({ children }) => {
             <Link to={`./product/${children.id}`}><h4>{children.title}</h4></Link>
             <div className="product-card--action">
                 <Button type="primary" onClick={() => handleCartItems({ type: "ADD", product: children })}>{itemIndex === -1 ? "Add to Cart" : "Added"}</Button>
-                <Like onChange={() => handleFavorites({ type: "TOGGLE", product: children })}/>
+                <Like status={favIndex === -1 ? false : true} onChange={() => handleFavorites({ type: "TOGGLE", product: children })}/>
             </div>
         </div>
     )

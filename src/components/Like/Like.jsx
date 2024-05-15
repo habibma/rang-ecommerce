@@ -2,9 +2,14 @@ import React from 'react'
 import './like.css'
 import useToggle from '../../hooks/useToggle'
 
-const Like = ({ onChange }) => {
+const Like = ({ status, onChange }) => {
 
-    const [on, onToggle] = useToggle({onToggle: onChange})
+    const [on, onToggle] = useToggle({
+        intitialValue: status,
+        onToggle: onChange
+    })
+
+    console.log("on:", on)
 
     return (
         <div onClick={onToggle}>

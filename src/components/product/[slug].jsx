@@ -5,33 +5,44 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Button from '../button/Button';
 import Like from '../Like/Like';
-import useEffectOnUpdate from '../../hooks/useEffectOnUpdate';
 
 const ProductDetails = () => {
 
-  const { cartItems, handleCartItems } = useContext(GlobalContext);
+  const { cartItems, handleCartItems, favorites, handleFavorites, products } = useContext(GlobalContext);
   const [product, setProduct] = useState({})
 
+  // const [, updateState] = useState();
+  // const forceUpdate = () => updateState({});
+
   const { id } = useParams()
+  // console.log("id= ",id);
 
   // Fetching product data from fakestoreapi
-  useEffectOnUpdate(() => {
+  useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then(response => response.json())
       .then(data => setProduct(data));
-  }, []);
+    setProduct(() => {
+      return products.filter(pro => pro.id === id)
+    })
+  }, [id]);
 
-  // to find the index of product inside the catr items array
+  // const product = products.filter(pro => pro.id === id)
+  // console.log(favorites);
+
   const itemIndex = cartItems.findIndex(item => item.id === product.id)
+
+  const favIndex = (favorites.findIndex(item => item.id === product.id) === -1 ? false : true)
+  // console.log(favIndex);
 
   return (
     <>
       <Header />
-      <div className='product-page'>
+      {id && <div className='product-page'>
         <section className='product-page--img-frame'>
           <img src={product.image} alt={product.title} />
           <div className="like-container">
-            <Like onChange={() => console.log("Added to favorite list")} />
+            <Like status={favIndex} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
           </div>
         </section>
         <section>
@@ -50,11 +61,11 @@ const ProductDetails = () => {
               >
                 {itemIndex === -1 ? "Add to Cart" : "Added"}
               </Button>
-              <button className='button'>Buy Now</button>
+              <button className='button' onClick={forceUpdate}>Buy Now</button>
             </div>
           </div>
         </section>
-      </div>
+      </div>}
       <Footer />
     </>
   )
