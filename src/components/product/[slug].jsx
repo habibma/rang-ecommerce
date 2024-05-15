@@ -60,7 +60,7 @@ const ProductDetails = () => {
               >
                 {itemIndex === -1 ? "Add to Cart" : "Added"}
               </Button>
-              <button className='button' onClick={forceUpdate}>Buy Now</button>
+              <button className='button'>Buy Now</button>
             </div>
           </div>
         </section>
