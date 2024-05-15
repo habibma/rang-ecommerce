@@ -9,7 +9,7 @@ const Like = ({ status, onChange }) => {
         onToggle: onChange
     })
 
-    console.log("on:", on)
+    // console.log("on:", on)
 
     return (
         <div onClick={onToggle}>

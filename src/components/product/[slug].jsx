@@ -27,7 +27,6 @@ const ProductDetails = () => {
     })
   }, [id]);
 
-  // const product = products.filter(pro => pro.id === id)
   // console.log(favorites);
 
   const itemIndex = cartItems.findIndex(item => item.id === product.id)
