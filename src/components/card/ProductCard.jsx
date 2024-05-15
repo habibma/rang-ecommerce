@@ -21,7 +21,7 @@ const ProductCard = ({ children }) => {
             <Link to={`./product/${children.id}`}><h4>{children.title}</h4></Link>
             <div className="product-card--action">
                 <Button type="primary" onClick={() => handleCartItems({ type: "ADD", product: children })}>{itemIndex === -1 ? "Add to Cart" : "Added"}</Button>
-                <Like onChange={() => handleFavorites({ type: "ADD", product: children })}/>
+                <Like onChange={() => handleFavorites({ type: "TOGGLE", product: children })}/>
             </div>
         </div>
     )

@@ -35,8 +35,16 @@ const reducer = (state, action) => {
             });
             return newArray;
         }
+        case "TOGGLE": {
+            if (itemIndex === -1) {
+                newArray.push({ ...action.product, quantity: 1 });
+                return newArray;
+            } else {
+                newArray.splice(itemIndex, 1);
+                return newArray;
+            }
+        }
         case "REMOVE": {
-
             newArray.splice(itemIndex, 1);
             return newArray;
         }
@@ -160,7 +168,7 @@ const GlobalState = ({ children }) => {
 
     const handleFavorites = input => {
         setFavorites({ type: input.type, product: input.product })
-        console.log('added to favorite list');
+        console.log(favorites);
 
     }
 

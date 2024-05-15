@@ -5,12 +5,12 @@ export const MenuContext = createContext(null)
 
 const MenuState = ({ children, onOpen}) => {
 
-    const [open, toggleOpen] = useToggle({
+    const [open, toggleOpen, toggleClose] = useToggle({
         onToggle: onOpen
     })
 
     return (
-        <MenuContext.Provider value={{ open, toggleOpen }}>
+        <MenuContext.Provider value={{ open, toggleOpen, toggleClose }}>
             {children}
         </MenuContext.Provider>
     )
