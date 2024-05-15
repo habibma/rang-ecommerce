@@ -9,9 +9,13 @@ const useToggle = ({ intitialValue = false, onToggle = () => { } }) => {
     setOn(prevState => !prevState)
   }
 
+  const toggleOff = () => {
+    setOn(false)
+  }
+
   useEffectOnUpdate(onToggle, [on])
 
-  return [on, toggle];
+  return [on, toggle, toggleOff];
 }
 
 export default useToggle;
