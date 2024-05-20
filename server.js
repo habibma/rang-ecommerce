@@ -8,6 +8,7 @@ import user from './src/assets/imgs/user.png'
 createServer({
     models: {
         customer: Model,
+        product: Model
     },
 
     factories: {
@@ -43,18 +44,30 @@ createServer({
 
 
         this.get("/customers", (schema, request) => {
-            return schema.customers.all(); 
-          });
+            return schema.customers.all();
+        });
+        this.get("/products", (schema, request) => {
+            return schema.products.all();
+        });
 
         this.get("/customers/:id", (schema, request) => {
             const id = request.params.id
             return schema.customers.find(id)
+        })
+        this.get("/products/:id", (schema, request) => {
+            const id = request.params.id
+            return schema.products.find(id)
         })
 
         this.post("/customers", (schema, request) => {
             let attrs = JSON.parse(request.requestBody)
             console.log(attrs)
             return schema.customers.create(attrs)
+        })
+        this.post("/products", (schema, request) => {
+            let attrs = JSON.parse(request.requestBody)
+            console.log(attrs)
+            return schema.products.create(attrs)
         })
 
         this.patch("/customers/:id", (schema, request) => {
@@ -64,11 +77,20 @@ createServer({
 
             return customer.update(newAttrs)
         })
+        this.patch("/products/:id", (schema, request) => {
+            let newAttrs = JSON.parse(request.requestBody)
+            let id = request.params.id
+            let product = schema.customers.find(id)
+            return product.update(newAttrs)
+        })
 
         this.delete("/customers/:id", (schema, request) => {
             let id = request.params.id
-
             return schema.customers.find(id).destroy()
+        })
+        this.delete("/products/:id", (schema, request) => {
+            let id = request.params.id
+            return schema.products.find(id).destroy()
         })
 
         this.passthrough('https://fakestoreapi.com/**') // to pass API requests go to an external domain
@@ -83,5 +105,18 @@ createServer({
         server.create("customer", { email: "someoneelse@example.com", amountOfSale: 2000 });
         server.create("customer", { amountOfSale: 3000 });
         server.create("customer")
+
+        for (let i = 2; i <= Math.floor(Math.random()* 10) +2 ; i++) {
+            server.create("product", {
+                id: i,
+                productName: faker.commerce.productName(),
+                price: Math.floor(Math.random() * 1000) + 0.01,
+                image: faker.image.url(640, 480, 'technics', true),
+                category: faker.commerce.department(),
+                color: "red",
+                inStock: true,
+                description: faker.lorem.paragraphs(2),
+            });
+        }
     }
 })

@@ -40,6 +40,7 @@ const Customers = () => {
       method: "POST",
       body: JSON.stringify({
         id: customer.id,
+        // avatar: "",
         userName: customer.userName,
         email: customer.email,
         amountOfSale: customer.amountOfSale,
@@ -57,15 +58,16 @@ const Customers = () => {
   const clearForm = () => {
     setinputs({
       id: "",
+      // avatar: "",
       userName: "",
       email: "",
       amountOfSale: "",
       isVerified: ""
     })
   }
+  
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(inputs)
     postCustomer(inputs)
     clearForm()
     fetchData();
@@ -88,6 +90,7 @@ const Customers = () => {
       field: 'avatar',
       headerName: 'Avatar',
       maxWidth: 100,
+      type: 'file',
       renderCell: params => {
         return <img src={params.row.avatar || user} />
       },
@@ -128,7 +131,7 @@ const Customers = () => {
         <p className='notif'>{postRespose}</p>
       </div>
       <DataTable slug='customers' columns={columns} rows={customers} handleDelete={handleDelete} />
-      {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} />}
+      {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} required />}
     </div>
   )
 }
