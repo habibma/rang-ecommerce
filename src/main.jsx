@@ -5,6 +5,9 @@ import App from './App.jsx'
 import './index.scss'
 import GlobalState from './context/Context';
 
+import "../server"
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   //<React.StrictMode>
     <BrowserRouter>

@@ -1,10 +1,86 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DataTable from '../DataTable'
 import user from '../../../assets/imgs/user.png'
-import { sales } from '../../../data'
+import Add from '../Add'
+// import { sales } from '../../../data'
 
 
 const Customers = () => {
+
+  const [open, setOpen] = useState(false)
+  const [customers, setCustomers] = useState([])
+  const [inputs, setinputs] = useState({});
+  const [postRespose, setPostResponse] = useState('')
+
+
+  function fetchData() {
+    fetch('../api/customers')
+      .then(response => response.json())
+      .then(data => {
+        setCustomers(data.customers)
+      })
+  }
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const handleChange = ({ target }) => {
+    const { value, name } = target;
+    setinputs(prevState => {
+      return ({
+        ...prevState,
+        [name]: value
+      })
+    })
+    console.log(inputs);
+  }
+
+  function postCustomer(customer) {
+    fetch("../api/customers", {
+      method: "POST",
+      body: JSON.stringify({
+        id: customer.id,
+        userName: customer.userName,
+        email: customer.email,
+        amountOfSale: customer.amountOfSale,
+        isVerified: false
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => setPostResponse(`The customer with id ${json.customer.id} submitted!`));
+    setTimeout(() => setPostResponse(""), 4000)
+  }
+
+  const clearForm = () => {
+    setinputs({
+      id: "",
+      userName: "",
+      email: "",
+      amountOfSale: "",
+      isVerified: ""
+    })
+  }
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(inputs)
+    postCustomer(inputs)
+    clearForm()
+    fetchData();
+    setOpen(false)
+  }
+
+  const handleDelete = (id) => {
+    console.log("row was deleted");
+    fetch(`../api/customers/${id}`, {
+      method: "DELETE",
+    })
+      .then(res => res.text())
+      .then(res => console.log(res))
+    fetchData();
+  };
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -14,7 +90,7 @@ const Customers = () => {
       maxWidth: 100,
       renderCell: params => {
         return <img src={params.row.avatar || user} />
-      }
+      },
     },
     {
       field: 'userName',
@@ -25,7 +101,7 @@ const Customers = () => {
     {
       field: 'email',
       headerName: 'Email',
-      maxWidth: 220,
+      maxWidth: 250,
       editable: false,
     },
     {
@@ -46,8 +122,13 @@ const Customers = () => {
 
   return (
     <div className='customers-page'>
-      <h2>Customers</h2>
-      <DataTable slug='customers' columns={columns} rows={sales} />
+      <div className='top-bar'>
+        <h2>Customers</h2>
+        <button onClick={() => setOpen(true)}>Add Customer</button>
+        <p className='notif'>{postRespose}</p>
+      </div>
+      <DataTable slug='customers' columns={columns} rows={customers} handleDelete={handleDelete} />
+      {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} />}
     </div>
   )
 }

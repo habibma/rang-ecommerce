@@ -5,12 +5,7 @@ import { Link } from 'react-router-dom'
 import editIcon from '../../assets/imgs/edit.svg';
 import deleteIcon from '../../assets/imgs/delete.svg';
 
-const DataTable = ({ columns, rows, slug }) => {
-
-    const handleDelete = id => {
-        //delete the Item (API call)
-        console.log(id, 'is deleted')
-    }
+const DataTable = ({ columns, rows, slug, handleDelete }) => {
 
     const actionColumn = {
         field: 'action',

@@ -44,13 +44,13 @@ function App() {
     <div className=''>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="checkout" element={<Checkout />} />
-        <Route path="Login" element={<Login />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path={`product/:id`} element={<ProductDetails />} />
-        <Route path="profile/:activepage" element={<UserProfile />} />
-        <Route path="admin" element={<Layout />}>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path={`/product/:id`} element={<ProductDetails />} />
+        <Route path="/profile/:activepage" element={<UserProfile />} />
+        <Route path="/admin" element={<Layout />}>
           <Route index element={<Admin />} />
           <Route path="customers" element={<Customers />} />
           <Route path="customers/:id" element={<Customer />} />

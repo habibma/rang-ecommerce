@@ -6,6 +6,18 @@ import { products } from '../../../data'
 const Products = () => {
 
   const [open, setOpen] = useState(false)
+  const [inputs, setinputs] = useState({});
+
+  const handleChange = ({ target }) => {
+      const { value, name } = target;
+      setinputs(prevState => {
+        console.log(inputs[name]);
+        return ({
+          ...prevState,
+          [name]: value
+        })
+      })
+    }
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -62,7 +74,7 @@ const Products = () => {
         <button onClick={() => setOpen(true)}>Add Product</button>
       </div>
       <DataTable slug="products" columns={columns} rows={products} />
-      {open && <Add slug="product" columns={columns} setOpen={setOpen} />}
+      {open && <Add slug="product" columns={columns} setOpen={setOpen}  value={inputs} onChange={handleChange}/>}
     </div>
   )
 }
