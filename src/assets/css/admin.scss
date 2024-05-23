@@ -72,11 +72,22 @@
 //Menu
 .admin-menu {
 
+    @include sm {
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+    }
+
     .admin-menu-item {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-bottom: 20px;
+
+        @include sm {
+            flex-direction: row;
+            gap: 25px;
+        }
 
         .section-title {
             font-size: 10px;
@@ -93,6 +104,7 @@
             padding: 10px;
             border-radius: 1px;
             transition: 0.2s ease-in-out;
+
 
             &:hover {
                 background-color: #384256;
