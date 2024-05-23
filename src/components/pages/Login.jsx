@@ -37,21 +37,17 @@ const Login = () => {
     ]
 
     return (
-        <>
-            <Header />
-            <div className="form-container">
-                <form className='form' onSubmit={handleSubmit}>
-                    <h2 className='pro-heading'>Sign In</h2>
-                    {fileds.map(field => (
-                        <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleSignIn} />
-                    ))}
-                    <Button type='primary'>{isLoggedIn ? 'Log out' : 'Log in'}</Button>
-                    <small>New user? <Link to='/signup'>Create an account</Link></small>
-                </form>
-                <p className='fieldError'>{error}</p>
-            </div>
-            <Footer />
-        </>
+        <div className="form-container">
+            <form className='form' onSubmit={handleSubmit}>
+                <h2 className='pro-heading'>Sign In</h2>
+                {fileds.map(field => (
+                    <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleSignIn} />
+                ))}
+                <Button type='primary'>{isLoggedIn ? 'Log out' : 'Log in'}</Button>
+                <small>New user? <Link to='/signup'>Create an account</Link></small>
+            </form>
+            <p className='fieldError'>{error}</p>
+        </div>
     );
 }
 

@@ -28,54 +28,55 @@ const Checkout = () => {
     }
 
     return (
-        <>
-            <Header />
-            <div className="checkout">
-                <h1>Checkout</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Price</th>
-                            <th>Quan</th>
+        <div className="checkout">
+            <h1>Checkout</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Quan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cartItems.map(item => (
+                        <tr key={item.id} className="checkout-item">
+                            <td>{item.title}</td>
+                            <td>{item.price}</td>
+                            <td>{item.quantity}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {cartItems.map(item => (
-                            <tr key={item.id} className="checkout-item">
-                                <td>{item.title}</td>
-                                <td>{item.price}</td>
-                                <td>{item.quantity}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td><b>Total</b></td>
-                            <td colSpan="2"><b>{cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)}</b></td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <form className="iban-info" onSubmit={hadleSubmit}>
-                    <input
-                        type="type"
-                        placeholder="IBAN"
-                        onChange={({ target }) => setInput(prevState => ({ ...prevState, iban: target.value }))}
-                        value={input.iban}
-                        required
-                    />
-                    <input
-                        type="type"
-                        placeholder="BIC"
-                        onChange={({ target }) => setInput(prevState => ({ ...prevState, bic: target.value }))}
-                        value={input.bic}
-                        required
-                    ></input>
-                    <Button type="primary">Submit</Button>
-                </form>
+                    ))}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td colSpan="2"><b>{cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)}</b></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div className="paying-methods">
+                <div className="item">Dedit Card</div>
+                <div className="item">Credit Card</div>
+                <div className="item">Pay Pal</div>
             </div>
-            <Footer />
-        </>
+            <form className="iban-info" onSubmit={hadleSubmit}>
+                <input
+                    type="type"
+                    placeholder="IBAN"
+                    onChange={({ target }) => setInput(prevState => ({ ...prevState, iban: target.value }))}
+                    value={input.iban}
+                    required
+                />
+                <input
+                    type="type"
+                    placeholder="BIC"
+                    onChange={({ target }) => setInput(prevState => ({ ...prevState, bic: target.value }))}
+                    value={input.bic}
+                    required
+                ></input>
+                <Button type="primary">Submit</Button>
+            </form>
+        </div>
     );
 }
 

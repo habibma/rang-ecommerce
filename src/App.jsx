@@ -19,11 +19,23 @@ import Products from "./components/admin/pages/Products";
 import { default as Orders } from "./components/admin/pages/Orders";
 import Customer from "./components/admin/pages/Customer";
 import Product from "./components/admin/pages/Product";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 
 function App() {
 
-  const Layout = () => {
+  const UserLayout = () => {
+    return (
+      <>
+        <Header />
+        <Outlet />
+        <Footer />
+      </>
+    )
+  }
+
+  const AdminLayout = () => {
     return (
       <div className="main-container">
         <Navbar />
@@ -43,14 +55,16 @@ function App() {
   return (
     <div className=''>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path={`/product/:id`} element={<ProductDetails />} />
-        <Route path="/profile/:activepage" element={<UserProfile />} />
-        <Route path="/admin" element={<Layout />}>
+        <Route peth='/' element={<UserLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path={`/product/:id`} element={<ProductDetails />} />
+          <Route path="/profile/:activepage" element={<UserProfile />} />
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Admin />} />
           <Route path="customers" element={<Customers />} />
           <Route path="customers/:id" element={<Customer />} />

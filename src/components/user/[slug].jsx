@@ -20,7 +20,6 @@ const UserProfile = () => {
   return (
     <>
       {currentUser.isLoggedIn ? <>
-        <Header />
         <div className='row'>Hello, <b>{currentUser.user.displayName}</b></div>
         <section className='profile-section row'>
           <aside className='profile-section--sidebar'>
@@ -95,7 +94,6 @@ const UserProfile = () => {
             {activepage === "favorites" && <FavoriteList />}
           </main>
         </section>
-        <Footer />
       </> :
         <Login />}
 

@@ -77,7 +77,7 @@ const SignUp = () => {
             type: 'email',
             placeholder: 'Email',
             errorMessage: "It should be a valid email address!",
-            pattern:'!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i',
+            pattern: '!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i',
             required: true,
             label: 'Email'
         },
@@ -104,21 +104,17 @@ const SignUp = () => {
     ]
 
     return (
-        <>
-            <Header />
-            <div className="form-container">
-                <form className='form' onSubmit={handleSubmit}>
-                    <h2 className='pro-heading'>Register</h2>
-                    {fields.map(field => (
-                        <FormInput key={field.id} {...field} value={inputs[field.name]} onChange={handleChange} />
-                    ))}
-                    <Button type='primary'>Submit</Button>
-                    <small>Already have an account? <Link to='/login'>Log In</Link></small>
-                </form>
-                <p className='fieldError'>{error}</p>
-            </div>
-            <Footer />
-        </>
+        <div className="form-container">
+            <form className='form' onSubmit={handleSubmit}>
+                <h2 className='pro-heading'>Register</h2>
+                {fields.map(field => (
+                    <FormInput key={field.id} {...field} value={inputs[field.name]} onChange={handleChange} />
+                ))}
+                <Button type='primary'>Submit</Button>
+                <small>Already have an account? <Link to='/login'>Log In</Link></small>
+            </form>
+            <p className='fieldError'>{error}</p>
+        </div>
     );
 }
 

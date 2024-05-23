@@ -35,9 +35,8 @@ const ProductDetails = () => {
 
   return (
     <>
-      <Header />
       {product ? <div className='product-page'>
-        <section className='product-page--img-frame'>
+        <section className='product-page--img-frame' >
           <img src={product.image} alt={product.title} />
           <div className="like-container">
             <Like status={fav} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
@@ -68,8 +67,7 @@ const ProductDetails = () => {
             </div>
           </div>
         </section>
-      </div> : <h2>Loading ...</h2>}
-      <Footer />
+      </div > : <h2>Loading ...</h2>}
     </>
   )
 }

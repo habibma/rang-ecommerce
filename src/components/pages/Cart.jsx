@@ -11,7 +11,6 @@ const Cart = () => {
 
     return (
         <>
-            <Header />
             {cartItems == 0 ?
                 <section className="row cart-warning"><p>Your Cart is Empty...</p></section> :
                 <section className="row">
@@ -55,7 +54,6 @@ const Cart = () => {
                     <Link to="/checkout"><Button type="primary">Checkout</Button></Link>
                 </section>
             }
-            <Footer />
         </>
     );
 }
