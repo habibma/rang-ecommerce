@@ -10,38 +10,34 @@ const ProductDetails = () => {
 
   const { cartItems, handleCartItems, favorites, handleFavorites, products } = useContext(GlobalContext);
   const [product, setProduct] = useState({})
-
-  // const [, updateState] = useState();
-  // const forceUpdate = () => updateState({});
+  const [fav, setFav] =useState()
 
   const { id } = useParams()
-  // console.log("id= ",id);
 
-  // Fetching product data from fakestoreapi
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then(response => response.json())
-      .then(data => setProduct(data));
     setProduct(() => {
-      return products.filter(pro => pro.id === id)
+      return products.filter(product => product.id == id)[0]
     })
   }, [id]);
 
-  // console.log(favorites);
+  useEffect(() => {
+    setFav(favorites.findIndex(item => item.id == product.id) === -1 ? false : true)
+  }, [product])
+  console.log(product.id);
 
   const itemIndex = cartItems.findIndex(item => item.id === product.id)
+  console.log(itemIndex);
 
-  const favIndex = (favorites.findIndex(item => item.id === product.id) === -1 ? false : true)
-  // console.log(favIndex);
+  console.log(fav);
 
   return (
     <>
       <Header />
-      {id && <div className='product-page'>
+      {product && <div className='product-page'>
         <section className='product-page--img-frame'>
           <img src={product.image} alt={product.title} />
           <div className="like-container">
-            <Like status={favIndex} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
+           <Like status={fav} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
           </div>
         </section>
         <section>
