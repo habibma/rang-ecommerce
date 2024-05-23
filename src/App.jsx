@@ -1,6 +1,8 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 
 import './App.scss';
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import Home from './components/pages/Home';
 import Cart from './components/pages/Cart';
 import Checkout from "./components/pages/Checkout";
@@ -8,7 +10,6 @@ import Login from "./components/pages/Login";
 import ProductDetails from './components/pages/Products/[slug]';
 import UserProfile from './components/pages/Profile/[slug]';
 import SignUp from "./components/pages/SignUp";
-import Admin from "./components/admin/pages/Admin";
 
 import Navbar from "./components/admin/Navbar";
 import { default as AdminFooter } from "./components/admin/Footer";
@@ -18,8 +19,7 @@ import Products from "./components/admin/pages/Products";
 import Orders from "./components/admin/pages/Orders";
 import Customer from "./components/admin/pages/Customer";
 import Product from "./components/admin/pages/Product";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
+import Dashboard from "./components/admin/pages/Dashboard";
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
             <Menu />
           </div>
           <div className="content-container">
-            <Outlet />  {/* this section of page would be dynamically pages */}
+            <Outlet />
           </div>
         </div>
         <AdminFooter />
@@ -54,17 +54,17 @@ function App() {
   return (
     <div className=''>
       <Routes>
-        <Route element={<UserLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path={`/product/:id`} element={<ProductDetails />} />
-          <Route path="/profile/:activepage" element={<UserProfile />} />
+        <Route path="/" element={<UserLayout />}>
+          <Route index element={<Home />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path={`product/:id`} element={<ProductDetails />} />
+          <Route path="profile/:activepage" element={<UserProfile />} />
         </Route>
-        <Route element={<AdminLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
           <Route path="customers" element={<Customers />} />
           <Route path="customers/:id" element={<Customer />} />
           <Route path="products" element={<Products />} />
