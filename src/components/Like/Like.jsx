@@ -9,8 +9,6 @@ const Like = ({ status, onChange }) => {
         onToggle: onChange
     })
 
-    console.log('is status on?', on)
-
     return (
         <div onClick={onToggle}>
             <svg xmlns="http://www.w3.org/2000/svg" fill={status ? "red" : 'none'} viewBox="0 0 24 24" strokeWidth={1.5} stroke={status ? "red" : '#2F4F4F'} className="like">

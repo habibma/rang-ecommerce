@@ -18,10 +18,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({})
   const [fav, setFav] =useState()
 
-  const [refresh, setRefresh] =useState({})
-
   const { id } = useParams()
-  console.log('id:',id)
 
   useEffect(() => {
     setProduct(() => {
@@ -29,16 +26,12 @@ const ProductDetails = () => {
     })
   }, [id, products]);
 
-  console.log('this product after searching in products:', product)
-
   useEffect(() => {
     setFav(favorites.findIndex(item => item.id == product.id) === -1 ? false : true)
   }, [product, favorites])
 
   const itemIndex = cartItems.findIndex(item => item.id === product.id)
-  console.log('itemIndex in Cart:',itemIndex);
 
-  console.log('is this product in favorite List? (after searching in favorite list)', fav);
 
   return (
     <>
@@ -66,7 +59,7 @@ const ProductDetails = () => {
               >
                 {itemIndex === -1 ? "Add to Cart" : "Added"}
               </Button>
-              <button onClick={()=> setRefresh(pre => {return {...pre}})} className='button'>Buy Now</button>
+              <button className='button'>Buy Now</button>
             </div>
           </div>
         </section>
