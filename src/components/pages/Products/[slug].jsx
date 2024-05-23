@@ -1,20 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom';
-import { GlobalContext } from '../../context/Context';
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
-import Button from '../button/Button';
-import Like from '../Like/Like';
+import { GlobalContext } from '../../../context/Context';
+import Button from '../../button/Button';
+import Like from '../../like/Like';
 
 const ProductDetails = () => {
-  console.log('---------')
 
   const { cartItems, handleCartItems, favorites, handleFavorites, products } = useContext(GlobalContext);
-  console.log(
-    "cartItems", cartItems,
-    '\nfavorites', favorites,
-    '\nproducts', products
-  )
+
   const [product, setProduct] = useState({})
   const [fav, setFav] = useState()
 

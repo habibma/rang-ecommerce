@@ -89,7 +89,7 @@ const Products = () => {
     {
       field: 'img',
       headerName: 'Image',
-      width: 100,
+      width: 85,
       renderCell: params => {
         return <img src={params.row.image} />
       }
@@ -97,7 +97,7 @@ const Products = () => {
     {
       field: 'productName',
       headerName: 'Product Name',
-      maxWidth: 200,
+      maxWidth: 180,
       type: 'string',
       editable: false,
     },

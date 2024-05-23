@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../context/Context";
 import { Link } from "react-router-dom";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
 import Button from "../button/Button";
-import Image from "../Image/Image";
+import Image from "../image/Image";
 
 const Cart = () => {
     const { cartItems, handleCartItems } = useContext(GlobalContext);

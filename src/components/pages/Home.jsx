@@ -1,8 +1,6 @@
 import { useContext } from 'react';
 import ProductCard from '../card/ProductCard';
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
-import Menu from '../Menu/index';
+import Menu from '../menu/index';
 import { GlobalContext } from '../../context/Context';
 
 const Home = () => {

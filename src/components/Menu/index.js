@@ -1,7 +1,7 @@
-import Menu from '../Menu/Menu';
-import MenuButton from '../Menu/MenuButton';
-import MenuDropdown from '../Menu/MenuDropdown';
-import MenuItem from '../Menu/MenuItem';
+import Menu from './Menu';
+import MenuButton from './MenuButton';
+import MenuDropdown from './MenuDropdown';
+import MenuItem from './MenuItem';
 
 Menu.Button = MenuButton;
 Menu.Dropdown = MenuDropdown;

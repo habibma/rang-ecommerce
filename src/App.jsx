@@ -5,10 +5,9 @@ import Home from './components/pages/Home';
 import Cart from './components/pages/Cart';
 import Checkout from "./components/pages/Checkout";
 import Login from "./components/pages/Login";
-import ProductDetails from './components/product/[slug]';
-import UserProfile from './components/user/[slug]';
+import ProductDetails from './components/pages/Products/[slug]';
+import UserProfile from './components/pages/Profile/[slug]';
 import SignUp from "./components/pages/SignUp";
-import FavoriteList from "./components/FavoriteList";
 import Admin from "./components/admin/pages/Admin";
 
 import Navbar from "./components/admin/Navbar";
@@ -16,7 +15,7 @@ import { default as AdminFooter } from "./components/admin/Footer";
 import Menu from "./components/admin/Menu";
 import Customers from "./components/admin/pages/Customers";
 import Products from "./components/admin/pages/Products";
-import { default as Orders } from "./components/admin/pages/Orders";
+import Orders from "./components/admin/pages/Orders";
 import Customer from "./components/admin/pages/Customer";
 import Product from "./components/admin/pages/Product";
 import Header from "./components/header/Header";
@@ -71,7 +70,6 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="products/:id" element={<Product />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="favorites" element={<FavoriteList />} />
         </Route>
       </Routes>
     </div>

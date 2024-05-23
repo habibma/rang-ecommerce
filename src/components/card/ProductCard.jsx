@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/Context";
 import Button from "../button/Button";
-import Like from "../Like/Like";
+import Like from "../like/Like";
 import './card.scss'
-import Image from "../Image/Image";
+import Image from "../image/Image";
 
 const ProductCard = ({ children }) => {
 
