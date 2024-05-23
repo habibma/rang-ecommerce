@@ -13,7 +13,7 @@ const useToggle = ({ intitialValue = false, onToggle = () => { } }) => {
     setOn(false)
   }
 
-  useEffectOnUpdate(onToggle, [on])
+  useEffectOnUpdate(onToggle, [on]) // to Prevent to get executed in first render
 
   return [on, toggle, toggleOff];
 }

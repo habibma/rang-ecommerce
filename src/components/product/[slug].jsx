@@ -7,33 +7,43 @@ import Button from '../button/Button';
 import Like from '../Like/Like';
 
 const ProductDetails = () => {
+  console.log('---------')
 
   const { cartItems, handleCartItems, favorites, handleFavorites, products } = useContext(GlobalContext);
+  console.log(
+    "cartItems", cartItems,
+    '\nfavorites', favorites,
+    '\nproducts', products
+  )
   const [product, setProduct] = useState({})
   const [fav, setFav] =useState()
 
+  const [refresh, setRefresh] =useState({})
+
   const { id } = useParams()
+  console.log('id:',id)
 
   useEffect(() => {
     setProduct(() => {
       return products.filter(product => product.id == id)[0]
     })
-  }, [id]);
+  }, [id, products]);
+
+  console.log('this product after searching in products:', product)
 
   useEffect(() => {
     setFav(favorites.findIndex(item => item.id == product.id) === -1 ? false : true)
-  }, [product])
-  console.log(product.id);
+  }, [product, favorites])
 
   const itemIndex = cartItems.findIndex(item => item.id === product.id)
-  console.log(itemIndex);
+  console.log('itemIndex in Cart:',itemIndex);
 
-  console.log(fav);
+  console.log('is this product in favorite List? (after searching in favorite list)', fav);
 
   return (
     <>
       <Header />
-      {product && <div className='product-page'>
+      {product ? <div className='product-page'>
         <section className='product-page--img-frame'>
           <img src={product.image} alt={product.title} />
           <div className="like-container">
@@ -56,11 +66,11 @@ const ProductDetails = () => {
               >
                 {itemIndex === -1 ? "Add to Cart" : "Added"}
               </Button>
-              <button className='button'>Buy Now</button>
+              <button onClick={()=> setRefresh(pre => {return {...pre}})} className='button'>Buy Now</button>
             </div>
           </div>
         </section>
-      </div>}
+      </div> :  <h2>Loading ...</h2>}
       <Footer />
     </>
   )

@@ -65,7 +65,6 @@ const GlobalState = ({ children }) => {
 
     // Products Page
     const [products, setProducts] = useState([]);
-
     const [select, setSelect] = useState("")
 
     // Fetching products data from fakestoreapi

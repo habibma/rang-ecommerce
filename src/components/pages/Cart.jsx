@@ -13,7 +13,7 @@ const Cart = () => {
         <>
             <Header />
             {cartItems == 0 ?
-                <section className="row"><p>Your Cart is Empty...</p></section> :
+                <section className="row cart-warning"><p>Your Cart is Empty...</p></section> :
                 <section className="row">
                     <h1>Cart</h1>
                     <div className="cart">

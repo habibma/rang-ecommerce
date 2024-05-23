@@ -4,7 +4,6 @@ import { nanoid } from 'nanoid';
 
 import user from './src/assets/imgs/user.png'
 
-
 createServer({
     models: {
         customer: Model,
@@ -41,7 +40,6 @@ createServer({
     routes() {
         this.namespace = "/api"
         this.logging = false
-
 
         this.get("/customers", (schema, request) => {
             return schema.customers.all();
@@ -95,8 +93,6 @@ createServer({
 
         this.passthrough('https://fakestoreapi.com/**') // to pass API requests go to an external domain
         this.passthrough('https://identitytoolkit.googleapis.com/**')  // Allow all requests containing /firebase
-
-
     },
 
     seeds(server) {

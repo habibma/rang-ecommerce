@@ -184,6 +184,11 @@ table {
 
 
 /* ================================================ Cart Page ======= */
+.cart-warning {
+  display: flex;
+  justify-content: center;
+}
+
 .cart {
   display: flex;
   flex-wrap: wrap;
@@ -298,8 +303,8 @@ $sm: 480px;
         line-height: 0;
 
         .like {
-        width: 30px;
-      }
+          width: 30px;
+        }
       }
     }
   }
