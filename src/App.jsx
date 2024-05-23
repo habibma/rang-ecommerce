@@ -55,7 +55,7 @@ function App() {
   return (
     <div className=''>
       <Routes>
-        <Route peth='/' element={<UserLayout />}>
+        <Route element={<UserLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
