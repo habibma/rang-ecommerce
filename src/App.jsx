@@ -63,8 +63,8 @@ function App() {
           <Route path={`/product/:id`} element={<ProductDetails />} />
           <Route path="/profile/:activepage" element={<UserProfile />} />
         </Route>
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<Admin />} />
+        <Route element={<AdminLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="customers" element={<Customers />} />
           <Route path="customers/:id" element={<Customer />} />
           <Route path="products" element={<Products />} />

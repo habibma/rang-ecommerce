@@ -1,7 +1,7 @@
 import './admin.scss';
 import BestSales from '../BestSales';
 
-const Admin = () => {
+const Dashboard = () => {
 
   return (
     <div className='dashboard'>
@@ -20,4 +20,4 @@ const Admin = () => {
   )
 }
 
-export default Admin;
+export default Dashboard;
