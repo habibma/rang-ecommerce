@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
@@ -16,7 +16,7 @@ const ProductDetails = () => {
     '\nproducts', products
   )
   const [product, setProduct] = useState({})
-  const [fav, setFav] =useState()
+  const [fav, setFav] = useState()
 
   const { id } = useParams()
 
@@ -40,7 +40,7 @@ const ProductDetails = () => {
         <section className='product-page--img-frame'>
           <img src={product.image} alt={product.title} />
           <div className="like-container">
-           <Like status={fav} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
+            <Like status={fav} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
           </div>
         </section>
         <section>
@@ -59,11 +59,16 @@ const ProductDetails = () => {
               >
                 {itemIndex === -1 ? "Add to Cart" : "Added"}
               </Button>
-              <button className='button'>Buy Now</button>
+              <Link to="/checkout"><Button
+                type='secondary'
+                onClick={() => handleCartItems({ type: "ADD", product: product })}
+              >
+                Buy Now
+              </Button></Link>
             </div>
           </div>
         </section>
-      </div> :  <h2>Loading ...</h2>}
+      </div> : <h2>Loading ...</h2>}
       <Footer />
     </>
   )
