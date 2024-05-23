@@ -1,4 +1,4 @@
-import '../../../assets/css/admin.scss';
+import './admin.scss';
 import BestSales from '../BestSales';
 
 const Admin = () => {
