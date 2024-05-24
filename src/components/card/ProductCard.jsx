@@ -21,7 +21,7 @@ const ProductCard = ({ children }) => {
     return (
         <div className="product-card">
             <div className='product-card--frame'>
-                <Link to={`/product/${children.id}`}><Image src={children.image} alt={children.title} size="small" /></Link>
+                <Link to={`/product/${children.id}`}><Image src={children.image} alt={children.title} size="small" loading="lazy" height="150"></Image></Link>
             </div>
             <Link to={`/product/${children.id}`}><h4>{children.title}</h4></Link>
             <div className="product-card--action">

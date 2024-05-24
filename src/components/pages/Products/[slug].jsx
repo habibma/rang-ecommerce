@@ -31,7 +31,7 @@ const ProductDetails = () => {
     <>
       {product ? <div className='product-page'>
         <section className='product-page--img-frame' >
-          <Image src={product.image} alt={product.title} />
+          <Image src={product.image} alt={product.title} loading="lazy"/>
           <div className="like-container">
             <Like status={fav} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
           </div>
