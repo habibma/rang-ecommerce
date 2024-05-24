@@ -1,8 +1,9 @@
 import React from 'react'
+import './image.css'
 
-const Image = ({src, alt, size, className}) => {
+const Image = ({size, className, ...otherProps}) => {
     return (
-        <img className={`${className} image image-${size}`} src={src} alt={alt}/>
+        <img className={`${className} image image-${size}`} {...otherProps}/>
     )
 }
 
