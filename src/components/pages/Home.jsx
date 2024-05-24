@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { GlobalContext } from '../../context/Context';
 import ProductCard from '../card/ProductCard';
 import Carousel from '../carousel/Carousel';
+import CallToAction from '../callToAction/CallToAction';
+import ScrollToTop from '../scrollToTop/ScrollToTop';
 // import Menu from '../menu/Menu';
 
 const Home = () => {
@@ -38,6 +40,7 @@ const Home = () => {
                         <option value="men's clothing">men's clothing</option>
                         <option value="women's clothing">women's clothing</option>
                     </select>
+                    <p>You are on Rang. You can also shop on Rang Germany for products with fast local delivery. <a>Click here</a></p>
                     {/* <select defaultValue="">
                     <option>Price</option>
                 </select> */}
@@ -53,6 +56,8 @@ const Home = () => {
                     {products.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
                 </div>
             </section>
+            <CallToAction buttonText='Sign In'>See personalized recommendations</CallToAction>
+            <ScrollToTop />
         </>
     );
 }

@@ -165,15 +165,23 @@ table {
   gap: 20px;
   justify-content: center;
   margin: 15px auto;
+  position: relative;
+  z-index: 2;
 }
 
 
 .sort-bar {
   margin: 10px auto;
-  padding: 0 2em;
+  padding: 5px 2em;
   display: flex;
   align-items: center;
   column-gap: 5px;
+
+  background-color: #f1f1f1;
+  border-radius: 3px;
+
+  position: relative;
+  z-index: 2;
 
   & select {
     margin-right: 10px;
