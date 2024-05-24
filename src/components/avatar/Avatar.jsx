@@ -1,5 +1,5 @@
 import React from 'react'
-import 'avatar.css'
+import './avatar.css'
 import user from '../../assets/imgs/user.png'
 
 function Avatar({src, alt, children}) {

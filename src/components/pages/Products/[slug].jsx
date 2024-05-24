@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { GlobalContext } from '../../../context/Context';
 import Button from '../../button/Button';
 import Like from '../../like/Like';
-import Image from '../../image/Image';
+import Image from '../../Image/Image';
 
 const ProductDetails = () => {
 
