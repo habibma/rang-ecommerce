@@ -24,6 +24,8 @@
         border-radius: 50%;
         transition: 100ms;
 
+        z-index: 99;
+
         &:hover {
             cursor: pointer;
             background-color: rgba($color: #000, $alpha: 0.2);
