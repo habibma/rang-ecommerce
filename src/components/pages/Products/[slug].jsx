@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { GlobalContext } from '../../../context/Context';
 import Button from '../../button/Button';
-import Like from '../../like/Like';
+import Like from '../../Like/Like';
 import Image from '../../Image/Image';
 
 const ProductDetails = () => {

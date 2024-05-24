@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/Context";
 import Button from "../button/Button";
-import Like from "../like/Like";
+import Like from "../Like/Like";
 import Image from "../Image/Image";
 import './card.scss';
 
