@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../context/Context";
 import Button from "../button/Button";
 import Like from "../like/Like";
-import './card.scss'
+import './card.scss';
 import Image from "../image/Image";
 
 const ProductCard = ({ children }) => {

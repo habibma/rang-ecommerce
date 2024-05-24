@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { GlobalContext } from '../../../context/Context';
 import Button from '../../button/Button';
 import Like from '../../like/Like';
+import Image from '../../image/Image';
 
 const ProductDetails = () => {
 
@@ -30,7 +31,7 @@ const ProductDetails = () => {
     <>
       {product ? <div className='product-page'>
         <section className='product-page--img-frame' >
-          <img src={product.image} alt={product.title} />
+          <Image src={product.image} alt={product.title} />
           <div className="like-container">
             <Like status={fav} onChange={() => handleFavorites({ type: "TOGGLE", product: product })} />
           </div>
