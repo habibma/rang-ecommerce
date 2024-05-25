@@ -20,6 +20,12 @@ const Nav = () => {
             },
             {
                 id: nanoid(),
+                text: "Products",
+                icon: 'products',
+                href: 'products'
+            },
+            {
+                id: nanoid(),
                 text: "Admin",
                 icon: 'admin',
                 href: 'admin'

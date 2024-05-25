@@ -1,14 +1,10 @@
-import { useContext } from 'react';
-import { GlobalContext } from '../../context/Context';
-import ProductCard from '../card/ProductCard';
 import Carousel from '../carousel/Carousel';
 import CallToAction from '../callToAction/CallToAction';
 import ScrollToTop from '../scrollToTop/ScrollToTop';
+import Products from './Products/Products';
 // import Menu from '../menu/Menu';
 
 const Home = () => {
-
-    const { products, setSelect, select } = useContext(GlobalContext);
 
     const slides = [
         {
@@ -29,32 +25,7 @@ const Home = () => {
         <>
             <Carousel data={slides}/>
             <section className="row">
-                <div className="sort-bar">
-                    <label htmlFor="categories">
-                        Categories:
-                    </label>
-                    <select id="categories" className="category" value={select} onChange={({ target }) => setSelect(target.value)} >
-                        <option value="" defaultValue>All</option>
-                        <option value="electronics">electronics</option>
-                        <option value="jewelery">jewelery</option>
-                        <option value="men's clothing">men's clothing</option>
-                        <option value="women's clothing">women's clothing</option>
-                    </select>
-                    <p>You are on Rang. You can also shop on Rang Germany for products with fast local delivery. <a>Click here</a></p>
-                    {/* <select defaultValue="">
-                    <option>Price</option>
-                </select> */}
-                    {/* <Menu onOpen={() => console.log("price clicked!")}>
-                    <Menu.Button>Price</Menu.Button>
-                    <Menu.Dropdown>
-                        <Menu.Item>cheap</Menu.Item>
-                        <Menu.Item>expensive</Menu.Item>
-                    </Menu.Dropdown>
-                </Menu> */}
-                </div>
-                <div className="products-list">
-                    {products.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
-                </div>
+                <Products />
             </section>
             <CallToAction buttonText='Sign In'>See personalized recommendations</CallToAction>
             <ScrollToTop />

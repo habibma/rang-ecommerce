@@ -7,6 +7,7 @@ import Home from './components/pages/Home';
 import Cart from './components/pages/Cart';
 import Checkout from "./components/pages/Checkout";
 import Login from "./components/pages/Login";
+import ProductsList from './components/pages/Products/Products';
 import ProductDetails from './components/pages/Products/[slug]';
 import UserProfile from './components/pages/Profile/[slug]';
 import SignUp from "./components/pages/SignUp";
@@ -62,7 +63,8 @@ function App() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path={`product/:id`} element={<ProductDetails />} />
+          <Route path="products" element={<ProductsList />} />
+          <Route path={`products/:id`} element={<ProductDetails />} />
           <Route path="profile" element={<UserProfile />}>
             <Route path=":activePage" element={<UserProfile />}/>
           </Route>
