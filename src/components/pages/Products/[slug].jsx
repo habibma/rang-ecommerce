@@ -38,7 +38,7 @@ const ProductDetails = () => {
         </section>
         <section>
           <div className='product-page--desc'>
-            <small>{`category / ${product.category}`}</small>
+            <small><Link to="../">products</Link>{` / ${product.category} /`}</small>
             <div>
               <h2 className='product-title'>{product.title}</h2>
               <p>{product.description}</p>

@@ -63,7 +63,9 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path={`product/:id`} element={<ProductDetails />} />
-          <Route path="profile/:activepage" element={<UserProfile />} />
+          <Route path="profile" element={<UserProfile />}>
+            <Route path=":activePage" element={<UserProfile />}/>
+          </Route>
         </Route>
         <Route path="admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
@@ -74,7 +76,7 @@ function App() {
           <Route path="orders" element={<Orders />} />
         </Route>
       </Routes>
-    </div>
+    </div >
   )
 }
 

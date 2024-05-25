@@ -22,7 +22,7 @@ const Nav = () => {
                 id: nanoid(),
                 text: "Admin",
                 icon: 'admin',
-                href: '/admin'
+                href: 'admin'
             },
         ],
         [
@@ -30,14 +30,14 @@ const Nav = () => {
                 id: nanoid(),
                 text: "Cart",
                 icon: 'cart',
-                href: '/cart',
+                href: 'cart',
                 count: itemNumbers,
             },
             {
                 id: nanoid(),
                 text: "Profile",
                 icon: 'profile',
-                href: '/profile/dashboard'
+                href: 'profile'
             }
 
         ]
