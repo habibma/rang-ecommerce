@@ -28,7 +28,9 @@ function App() {
     return (
       <>
         <Header />
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
         <Footer />
       </>
     )
@@ -42,9 +44,9 @@ function App() {
           <div className="menu-container">
             <Menu />
           </div>
-          <div className="content-container">
+          <main className="content-container">
             <Outlet />
-          </div>
+          </main>
         </div>
         <AdminFooter />
       </div>
