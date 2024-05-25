@@ -1,7 +1,9 @@
 import React from 'react'
 import { useContext } from 'react';
 import { GlobalContext } from '../../../context/Context';
+import './products.scss'
 import ProductCard from '../../card/ProductCard';
+import Menu from '../../menu/index'
 
 const Products = () => {
 
@@ -23,13 +25,15 @@ const Products = () => {
         {/* <select defaultValue="">
                     <option>Price</option>
                 </select> */}
-        {/* <Menu onOpen={() => console.log("price clicked!")}>
+        <Menu onOpen={() => console.log("price clicked!")} onChange={setSelect}>
                     <Menu.Button>Price</Menu.Button>
                     <Menu.Dropdown>
-                        <Menu.Item>cheap</Menu.Item>
-                        <Menu.Item>expensive</Menu.Item>
+                        <Menu.Item value="electronics">Electronics</Menu.Item>
+                        <Menu.Item value="jewelery">Jewelery</Menu.Item>
+                        <Menu.Item value="men's clothing">men's</Menu.Item>
+                        <Menu.Item value="women's clothing">women's</Menu.Item>
                     </Menu.Dropdown>
-                </Menu> */}
+                </Menu>
       </div>
       <div className="products-list">
         {products.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}

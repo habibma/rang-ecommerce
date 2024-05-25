@@ -4,10 +4,14 @@ import { MenuContext } from '../../context/MenuContext'
 
 const MenuButton = ({ children }) => {
 
-    const { toggleOpen, toggleClose } = useContext(MenuContext);
+    const { toggleOpen } = useContext(MenuContext);
 
     return (
-        <Button onClick={toggleOpen} onBlur={toggleClose}>{children}</Button>
+        <Button
+            onClick={toggleOpen}
+        >
+            {children}
+        </Button>
     )
 }
 

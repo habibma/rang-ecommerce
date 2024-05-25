@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './menu.scss'
 import MenuState from '../../context/MenuContext'
 
-const Menu = ({ children, onOpen }) => {
-
+const Menu = ({ children, onOpen, onChange }) => {
     return (
-        <MenuState onOpen = {onOpen}>
+        <MenuState onOpen={onOpen} onChange={onChange}>
             <div className="menu">
                 {children}
             </div>
