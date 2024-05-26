@@ -4,11 +4,12 @@ import { MenuContext } from '../../context/MenuContext'
 
 const MenuButton = ({ children }) => {
 
-    const { toggleOpen } = useContext(MenuContext);
+    const { toggleOpen, focused } = useContext(MenuContext);
 
     return (
         <Button
             onClick={toggleOpen}
+            onBlur={!focused && open ? toggleOpen : undefined}
         >
             {children}
         </Button>

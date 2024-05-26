@@ -5,7 +5,7 @@ export const MenuContext = createContext(null)
 
 const MenuState = ({ children, onOpen, onChange}) => {
 
-    const [open, toggleOpen, toggleClose] = useToggle({
+    const [open, toggleOpen] = useToggle({
         onToggle: onOpen
     })
 
@@ -13,15 +13,17 @@ const MenuState = ({ children, onOpen, onChange}) => {
 
     const handleValue = ({target}) => {
         setValue(target.value)
-        toggleClose()
+        toggleOpen()
     }
+
+    const [focused, setFocused] = useState(false) //To resolve the onBlur bug
 
     useEffect(() => {
         onChange(OptionValue)
     }, [OptionValue])
 
     return (
-        <MenuContext.Provider value={{ open, toggleOpen, toggleClose, OptionValue, handleValue }}>
+        <MenuContext.Provider value={{ open, toggleOpen, OptionValue, handleValue, focused, setFocused }}>
             {children}
         </MenuContext.Provider>
     )

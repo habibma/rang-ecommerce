@@ -3,9 +3,9 @@ import { MenuContext } from '../../context/MenuContext';
 
 const MenuDropdown = ({ children }) => {
 
-  const { open } = useContext(MenuContext);
+  const { open , setFocused } = useContext(MenuContext);
 
-  return open && <div className='menu-dropdown'>{children}</div>
+  return open && <div className='menu-dropdown' onMouseEnter= {() => setFocused(true)} onMouseLeave={() => setFocused(false)}>{children}</div>
 }
 
 export default MenuDropdown

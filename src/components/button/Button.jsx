@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './button.scss'
 
-const Button = ({ type, children, ...restProps }) => {
+const Button = ({ type, children, ...otherProps }) => {
     let typeClass = type ? `btn-${type}` : "";
+
     return (
-        <button className={`button ${typeClass}`} {...restProps}>{children}</button>
+        <button
+            className={`button ${typeClass}`}
+            {...otherProps}
+        >
+            {children}
+        </button>
     )
 }
 
-export default Button
+export default Button  
