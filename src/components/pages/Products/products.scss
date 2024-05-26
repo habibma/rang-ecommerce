@@ -86,6 +86,19 @@ $sm: 480px;
     align-items: flex-start;
     gap: 15px;
 
+    .product-page--nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .gallry {
+
+      .photo {
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+      }
+    }
+
     .buy-section {
       width: 100%;
 

@@ -21,6 +21,9 @@ import Orders from "./components/admin/pages/Orders";
 import Customer from "./components/admin/pages/Customer";
 import Product from "./components/admin/pages/Product";
 import Dashboard from "./components/admin/pages/Dashboard";
+import PrductDescription from "./components/pages/Products/PrductDescription";
+import ProductRating from "./components/pages/Products/ProductRating";
+import ProductPhotos from "./components/pages/Products/ProductPhotos";
 
 
 function App() {
@@ -64,9 +67,13 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="products" element={<ProductsList />} />
-          <Route path={`products/:id`} element={<ProductDetails />} />
+          <Route path="products/:id" element={<ProductDetails />}>
+            <Route index element={<PrductDescription />} />
+            <Route path="reviews" element={<ProductRating />} />
+            <Route path="photos" element={<ProductPhotos />} />
+          </Route>
           <Route path="profile" element={<UserProfile />}>
-            <Route path=":activePage" element={<UserProfile />}/>
+            <Route path=":activePage" element={<UserProfile />} />
           </Route>
         </Route>
         <Route path="admin" element={<AdminLayout />}>
