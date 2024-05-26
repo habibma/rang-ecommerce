@@ -46,12 +46,14 @@ const ProductDetails = () => {
           <div className='product-page--desc'>
             <small className='breadcrumb '><Link to=".." relative='path'>products</Link>{` / ${product.category} /`}</small>
             <h2 className='product-title'>{product.title}</h2>
-            <nav className='product-page--nav'>
-              <NavLink to='.' style={({ isActive }) => isActive ? activeStyles : null} end>Description</NavLink>
-              <NavLink to='reviews' style={({ isActive }) => isActive ? activeStyles : null}>Reviews</NavLink>
-              <NavLink to='photos' style={({ isActive }) => isActive ? activeStyles : null}>Photos</NavLink>
-            </nav>
-            <Outlet context={{ description: product.description, rating: product.rating, photos: product.image }} />
+            <div>
+              <nav className='product-page--nav'>
+                <NavLink to='.' style={({ isActive }) => isActive ? activeStyles : null} end>Description</NavLink>
+                <NavLink to='reviews' style={({ isActive }) => isActive ? activeStyles : null}>Reviews</NavLink>
+                <NavLink to='photos' style={({ isActive }) => isActive ? activeStyles : null}>Photos</NavLink>
+              </nav>
+              <Outlet context={{ description: product.description, rating: product.rating, photos: product.image }} />
+            </div>
             <div className='buy-section'>
               <div><b>Price: </b>${product.price}</div>
               <small>Pricing incl. VAT and Shipping</small>
