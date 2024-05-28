@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { useContext } from 'react';
+import React, { useState, useContext } from 'react'
+import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../../context/Context';
 import './products.scss'
 import ProductCard from '../../card/ProductCard';
-import Menu from '../../menu/index'
-import { useSearchParams } from 'react-router-dom';
+import Menu from '../../menu/index.js'
 
 const Products = () => {
 
