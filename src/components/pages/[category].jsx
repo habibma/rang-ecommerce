@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductCard from '../card/ProductCard'
-import Categories from './Categories'
 
 const Category = () => {
 
@@ -13,8 +12,6 @@ const Category = () => {
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [category])
-
-    console.log((Categories));
 
     return (
         <div className="products-list">

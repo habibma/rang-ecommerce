@@ -14,8 +14,6 @@ const ProductCategories = () => {
             ))
     }, [])
 
-    console.log(categories);
-
     return (
         <>
             {categories && categories.map(category => {
