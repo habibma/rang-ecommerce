@@ -97,6 +97,7 @@ select {
 
 .flex {
   display: flex;
+  flex-wrap: wrap;
 
   &.justify {
     justify-content: space-around;
