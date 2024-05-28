@@ -24,6 +24,8 @@ import Dashboard from "./components/admin/pages/Dashboard";
 import PrductDescription from "./components/pages/Products/PrductDescription";
 import ProductRating from "./components/pages/Products/ProductRating";
 import ProductPhotos from "./components/pages/Products/ProductPhotos";
+import Categories from "./components/pages/Categories";
+import Category from "./components/pages/[category]";
 
 
 function App() {
@@ -72,6 +74,8 @@ function App() {
             <Route path="reviews" element={<ProductRating />} />
             <Route path="photos" element={<ProductPhotos />} />
           </Route>
+          <Route path="categories" element={<Categories />} />
+          <Route path="categories/:category" element={<Category />} />
           <Route path="profile" element={<UserProfile />}>
             <Route path=":activePage" element={<UserProfile />} />
           </Route>

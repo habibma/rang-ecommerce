@@ -35,7 +35,7 @@
         button {
             flex-grow: 1;
         }
-        
+
         div {
             &:last-child {
                 justify-self: center;
@@ -46,5 +46,40 @@
             display: flex;
             margin: 0 5px;
         }
+    }
+}
+
+.card {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+    border: 1px solid #fff;
+    padding: 0.5rem;
+    border-radius: 3px;
+    z-index: 99;
+
+    .card--frame {
+        width: 200px;
+        height: 200px;
+        // background-color: #2f2f2f;
+        overflow: hidden;
+
+        :hover {
+            background-color: #E27D5E;
+            cursor: pointer;
+        }
+
+        img {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .card--frame, title, button {
+        :hover {
+            background-color: #E27D5E;
+            cursor: pointer;
+        }
+    }
     }
 }

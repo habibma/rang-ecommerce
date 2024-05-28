@@ -44,7 +44,7 @@ const ProductDetails = () => {
         </section>
         <section>
           <div className='product-page--desc'>
-            <small className='breadcrumb '><Link to=".." relative='path'>products</Link>{` / ${product.category} /`}</small>
+            <small className='breadcrumb '><Link to=".." relative='path'>products</Link> / <Link to={`/categories/${product.category}`}>{product.category}</Link></small>
             <h2 className='product-title'>{product.title}</h2>
             <div>
               <nav className='product-page--nav'>

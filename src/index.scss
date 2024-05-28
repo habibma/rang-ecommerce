@@ -95,6 +95,14 @@ select {
   margin: 25px auto;
 }
 
+.flex {
+  display: flex;
+
+  &.justify {
+    justify-content: space-around;
+  }
+}
+
 
 /* ==== errors ====*/
 .fieldError {
@@ -249,4 +257,15 @@ table {
 .profile-picture {
   display: flex;
   justify-content: flex-end;
+}
+
+/* ================================================ Categories Page ======= */
+.categories-page {
+
+  section {
+    margin-block: 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 }
