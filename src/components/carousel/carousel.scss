@@ -1,9 +1,19 @@
+@import '../../assets/css/responsive.scss';
+
 .carousel {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     margin-bottom: -150px;
+
+    @include md {
+        margin-bottom: -75px;
+    }
+
+    @include sm {
+        margin-bottom: initial;
+    }
 
     .slide {
         width: 100%;
@@ -50,6 +60,14 @@
         position: absolute;
         bottom: 10rem;
 
+        @include md {
+            bottom: 6rem;
+        }
+
+        @include sm {
+            bottom: 1rem;
+        }
+
         .indicator {
             width: 0.5rem;
             height: 0.5rem;
@@ -65,6 +83,6 @@
             background-color: #333;
             box-shadow: 0 0 10px 1px #000;
         }
-        
+
     }
 }
