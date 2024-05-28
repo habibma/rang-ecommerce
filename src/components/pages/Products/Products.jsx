@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../../context/Context';
 import './products.scss'
 import ProductCard from '../../card/ProductCard';
-import Menu from '../../menu/index.js'
+import Menu from '../../menu/index';
 
 const Products = () => {
 
@@ -14,7 +14,7 @@ const Products = () => {
 
   const [price, setPrice] = useState({
     atLeast: 0,
-    atMost: 0
+    atMost: 1000
   })
 
   function handleChange({ target }) {
