@@ -45,10 +45,8 @@ const Nav = () => {
                 icon: 'profile',
                 href: 'profile'
             }
-
         ]
     ]
-
 
     return (
         <nav className="nav">
