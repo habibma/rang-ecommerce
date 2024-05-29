@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../../context/Context';
 import './products.scss'
 import ProductCard from '../../card/ProductCard';
-import Menu from '../../menu/index';
+import Menu from '../../menu';
 
 const Products = () => {
 
