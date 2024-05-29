@@ -37,11 +37,11 @@ const Products = () => {
   }
 
 
-  const priceMinFilter = +searchParams.get('atLeast') || price.atLeast
-  const priceMaxFilter = +searchParams.get('atMost') || price.atMost
+  const priceMinFilter = +searchParams.get('atLeast')
+  const priceMaxFilter = +searchParams.get('atMost')
 
   const displayedProducts = priceMinFilter || priceMaxFilter
-    ? products.filter(product => product.price >= priceMinFilter && product.price <= priceMaxFilter)
+    ? products.filter(product => product.price >= (priceMinFilter || price.atLeast) && product.price <= (priceMaxFilter || price.atMost))
     : products
 
   return (
@@ -87,7 +87,7 @@ const Products = () => {
             {price.atMost}$
           </span>
         </div>
-        <Button type='secondary' onClick={handleChange}>Reset</Button>
+        { (priceMinFilter || priceMaxFilter) ? <Button type='secondary' onClick={handleChange}>Reset</Button> : null}
       </div>
       <div className="products-list">
         {displayedProducts.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
