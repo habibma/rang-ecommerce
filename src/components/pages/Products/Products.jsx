@@ -4,6 +4,7 @@ import { GlobalContext } from '../../../context/Context';
 import './products.scss'
 import ProductCard from '../../card/ProductCard';
 import Menu from '../../Menu/index';
+import Button from '../../button/Button';
 
 const Products = () => {
 
@@ -72,7 +73,7 @@ const Products = () => {
             onChange={handleChange}
           />
           <span>
-            {price.atLeast}
+            {price.atLeast}$
           </span>
         </div>
         <div className="price">
@@ -87,9 +88,10 @@ const Products = () => {
             onChange={handleChange}
           />
           <span>
-            {price.atMost}
+            {price.atMost}$
           </span>
         </div>
+        <Button type='secondary' onClick={() => setSearchParams("")}>Reset</Button>
       </div>
       <div className="products-list">
         {displayedProducts.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
