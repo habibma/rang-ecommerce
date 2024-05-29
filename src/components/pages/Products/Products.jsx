@@ -8,50 +8,46 @@ import Button from '../../button/Button';
 
 const Products = () => {
 
-  const [searchParams, setSearchParams] = useSearchParams()
-  console.log("atLeast", searchParams.get('atLeast'))
-  console.log("atMost", searchParams.get('atMost'))
-  console.log(searchParams);
-
-  const [price, setPrice] = useState({
-    atLeast: 0,
-    atMost: 1000
-  })
-
-  function handleChange({ target }) {
-
-    const { name, value } = target;
-    setPrice(prevState => ({ ...prevState, [name]: value }))
-
-    setSearchParams(prev => {
-      const sp = new URLSearchParams(prev)
-      // if (value === null) {
-      //   sp.delete([name])
-      // } else {
-      sp.set([name], value)
-      // }
-      return `?${sp.toString()}`
-    })
-  }
-
   const { products, setSelect, select } = useContext(GlobalContext);
-
-  const priceMinFilter = +searchParams.get('atLeast')
-  const priceMaxFilter = +searchParams.get('atMost')
-
-  const displayedProducts = priceMinFilter && priceMaxFilter
-    ? products.filter(product => product.price >= priceMinFilter && product.price <= priceMaxFilter)
-    : products
 
   const prices = products.map(product => product.price)
   const minPrice = Math.floor(Math.min(...prices))
   const maxPrice = Math.ceil(Math.max(...prices))
-  console.log(maxPrice)
+
+  const [price, setPrice] = useState({
+    atLeast: minPrice,
+    atMost: maxPrice
+  })
+
+
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  function handleChange({ target }) {
+    const { name, value } = target;
+    if (!value) {
+      setSearchParams({})
+      setPrice({ atLeast: 0, atMost: 1000 })
+    } else {
+      setSearchParams(params => {
+        params.set([name], value)
+        return params
+      })
+      setPrice(prevState => ({ ...prevState, [name]: +value }))
+    }
+  }
+
+
+  const priceMinFilter = +searchParams.get('atLeast') || price.atLeast
+  const priceMaxFilter = +searchParams.get('atMost') || price.atMost
+
+  const displayedProducts = priceMinFilter || priceMaxFilter
+    ? products.filter(product => product.price >= priceMinFilter && product.price <= priceMaxFilter)
+    : products
 
   return (
     <>
       <div className="sort-bar">
-        <Menu id="categories" onOpen={() => console.log("price clicked!")} onChange={setSelect}>
+        <Menu id="categories" onChange={setSelect}>
           <Menu.Button shape='arrow'>{select || 'Categories'}</Menu.Button>
           <Menu.Dropdown>
             <Menu.Item value="">All</Menu.Item>
@@ -91,7 +87,7 @@ const Products = () => {
             {price.atMost}$
           </span>
         </div>
-        <Button type='secondary' onClick={() => setSearchParams("")}>Reset</Button>
+        <Button type='secondary' onClick={handleChange}>Reset</Button>
       </div>
       <div className="products-list">
         {displayedProducts.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
