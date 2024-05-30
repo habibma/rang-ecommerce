@@ -14,7 +14,6 @@ const ProductDetails = () => {
 
   const { id } = useParams()
   const location = useLocation()
-  console.log(location);
 
   const activeStyles = {
     fontWeight: "bold",
@@ -35,8 +34,6 @@ const ProductDetails = () => {
   const itemIndex = cartItems.findIndex(item => item.id === product.id)
 
   const search = location.state || ""
-
-  console.log(search);
 
   return (
     <>
