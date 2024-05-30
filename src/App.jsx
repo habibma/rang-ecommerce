@@ -26,6 +26,7 @@ import ProductRating from "./components/pages/Products/ProductRating";
 import ProductPhotos from "./components/pages/Products/ProductPhotos";
 import Categories from "./components/pages/Categories/Categories";
 import Category from "./components/pages/Categories/[category]";
+import NotFound from "./components/pages/NotFound";
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
           <Route path="products/:id" element={<Product />} />
           <Route path="orders" element={<Orders />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div >
   )

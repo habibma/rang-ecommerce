@@ -268,3 +268,16 @@ table {
     flex-wrap: wrap;
   }
 }
+
+
+/* ================================================ 404 Page ======= */
+.not-found-container {
+  height: 80vh;
+  padding: 1rem;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  gap: 50px;
+}
