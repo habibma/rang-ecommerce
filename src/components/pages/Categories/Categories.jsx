@@ -1,6 +1,6 @@
 import React from 'react'
-import ProductCategories from './Products/ProductCategories';
-import CallToAction from '../callToAction/CallToAction';
+import CallToAction from '../../callToAction/CallToAction';
+import ProductCategories from '../Products/ProductCategories';
 
 const Categories = () => {
 

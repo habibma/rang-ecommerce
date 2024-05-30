@@ -10,7 +10,7 @@ const ProductCategories = () => {
         fetch('https://fakestoreapi.com/products/categories')
             .then(res => res.json())
             .then(data => setCategories(
-                data.map(item => ({id: nanoid(),title: item, image: `${item}.jpg`}))
+                data.map(item => ({ id: nanoid(), title: item, image: `${item}.jpg` }))
             ))
     }, [])
 
@@ -18,7 +18,7 @@ const ProductCategories = () => {
         <>
             {categories && categories.map(category => {
                 return (
-                    <Card key={category.id} title={category.title} img={category.image} href={`categories/${category.title}`}/>
+                    <Card key={category.id} title={category.title} img={category.image} href={`/categories/${category.title}`} />
                 )
             })}
         </>

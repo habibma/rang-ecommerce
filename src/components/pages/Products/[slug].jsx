@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { GlobalContext } from '../../../context/Context';
 import Button from '../../button/Button';
 import Like from '../../Like/Like';
@@ -13,6 +13,8 @@ const ProductDetails = () => {
   const [fav, setFav] = useState()
 
   const { id } = useParams()
+  const location = useLocation()
+  console.log(location);
 
   const activeStyles = {
     fontWeight: "bold",
@@ -32,6 +34,9 @@ const ProductDetails = () => {
 
   const itemIndex = cartItems.findIndex(item => item.id === product.id)
 
+  const search = location.state || ""
+
+  console.log(search);
 
   return (
     <>
@@ -45,6 +50,7 @@ const ProductDetails = () => {
         <section>
           <div className='product-page--desc'>
             <small className='breadcrumb '><Link to=".." relative='path'>products</Link> / <Link to={`/categories/${product.category}`}>{product.category}</Link></small>
+            <Link to={`..${search}`} relative="path" className="back-button">&larr; <span>Back to last page</span></Link>
             <h2 className='product-title'>{product.title}</h2>
             <div>
               <nav className='product-page--nav'>
