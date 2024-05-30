@@ -1,6 +1,6 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom'
-import Image from '../../Image/Image'
+import Image from '../../components/Image/Image'
 
 const ProductPhotos = () => {
 

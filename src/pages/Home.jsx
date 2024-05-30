@@ -1,10 +1,10 @@
-import Carousel from '../carousel/Carousel';
-import CallToAction from '../callToAction/CallToAction';
-import ScrollToTop from '../scrollToTop/ScrollToTop';
+import Carousel from '../components/carousel/Carousel';
+import CallToAction from '../components/callToAction/CallToAction';
+import ScrollToTop from '../components/scrollToTop/ScrollToTop';
 import ProductCategories from './Products/ProductCategories';
-import image_1 from '../../assets/imgs/1-unsplash.jpg'
-import image_2 from '../../assets/imgs/2-unsplash.jpg'
-import image_3 from '../../assets/imgs/3-unsplash.jpg'
+import image_1 from '../assets/imgs/1-unsplash.jpg'
+import image_2 from '../assets/imgs/2-unsplash.jpg'
+import image_3 from '../assets/imgs/3-unsplash.jpg'
 
 const Home = () => {
 

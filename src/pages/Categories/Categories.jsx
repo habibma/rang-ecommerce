@@ -1,5 +1,5 @@
 import React from 'react'
-import CallToAction from '../../callToAction/CallToAction';
+import CallToAction from '../../components/callToAction/CallToAction';
 import ProductCategories from '../Products/ProductCategories';
 
 const Categories = () => {

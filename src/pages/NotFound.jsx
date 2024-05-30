@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from '../button/Button'
-import Header from '../header/Header'
-import Footer from '../footer/Footer'
+import Button from '../components/button/Button'
+import Header from '../components/header/Header'
+import Footer from '../components/footer/Footer'
 
 const NotFound = () => {
     return (

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
-import FormInput from '../input/FormInput';
-import Button from '../button/Button';
+import FormInput from '../components/card/ProductCard';
+import Button from '../components/button/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../firebase'
+import { auth } from '../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUp = () => {

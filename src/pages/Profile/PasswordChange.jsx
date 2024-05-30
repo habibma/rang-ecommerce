@@ -1,6 +1,6 @@
 import { useState } from "react";
-import FormInput from "../../input/FormInput";
-import Button from "../../button/Button";
+import FormInput from "../../components/input/FormInput";
+import Button from "../../components/button/Button";
 
 const PasswordChange = () => {
 

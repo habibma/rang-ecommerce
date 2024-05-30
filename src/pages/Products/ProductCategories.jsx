@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Card from '../../card/Card';
+import Card from '../../components/card/Card';
 import { nanoid } from 'nanoid';
 
 const ProductCategories = () => {

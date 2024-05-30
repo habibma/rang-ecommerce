@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { GlobalContext } from "../../../context/Context"
-import Button from "../../button/Button"
+import { GlobalContext } from "../../context/Context"
+import Button from "../../components/button/Button"
 
 export const Dashboard = () => {
     return (

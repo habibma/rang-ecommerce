@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { auth } from '../../../firebase'
+import { auth } from '../../firebase'
 import { updateProfile } from "firebase/auth";
-import FormInput from "../../input/FormInput";
-import Button from "../../button/Button";
-import Avatar from "../../avatar/Avatar";
+import FormInput from "../../components/input/FormInput";
+import Button from "../../components/button/Button";
+import Avatar from "../../components/avatar/Avatar";
 
 const UserInfo = () => {
 

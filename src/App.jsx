@@ -3,14 +3,20 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import './App.scss';
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import Home from './components/pages/Home';
-import Cart from './components/pages/Cart';
-import Checkout from "./components/pages/Checkout";
-import Login from "./components/pages/Login";
-import ProductsList from './components/pages/Products/Products';
-import ProductDetails from './components/pages/Products/[slug]';
-import UserProfile from './components/pages/Profile/[slug]';
-import SignUp from "./components/pages/SignUp";
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import Checkout from "./pages/Checkout";
+import Login from "./pages/Login";
+import ProductsList from './pages/Products/Products';
+import ProductDetails from './pages/Products/[slug]';
+import UserProfile from './pages/Profile/[slug]';
+import SignUp from "./pages/SignUp";
+import PrductDescription from "./pages/Products/PrductDescription";
+import ProductRating from "./pages/Products/ProductRating";
+import ProductPhotos from "./pages/Products/ProductPhotos";
+import Categories from "./pages/Categories/Categories";
+import Category from "./pages/Categories/[category]";
+import NotFound from "./pages/NotFound";
 
 import Navbar from "./components/admin/Navbar";
 import { default as AdminFooter } from "./components/admin/Footer";
@@ -21,12 +27,7 @@ import Orders from "./components/admin/pages/Orders";
 import Customer from "./components/admin/pages/Customer";
 import Product from "./components/admin/pages/Product";
 import Dashboard from "./components/admin/pages/Dashboard";
-import PrductDescription from "./components/pages/Products/PrductDescription";
-import ProductRating from "./components/pages/Products/ProductRating";
-import ProductPhotos from "./components/pages/Products/ProductPhotos";
-import Categories from "./components/pages/Categories/Categories";
-import Category from "./components/pages/Categories/[category]";
-import NotFound from "./components/pages/NotFound";
+
 
 
 function App() {

@@ -1,9 +1,7 @@
 import { useContext, useState } from "react";
-import { GlobalContext } from "../../context/Context";
+import { GlobalContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
-import Header from "../header/Header";
-import Footer from "../footer/Footer";
-import Button from "../button/Button";
+import Button from "../components/button/Button";
 
 const Checkout = () => {
 

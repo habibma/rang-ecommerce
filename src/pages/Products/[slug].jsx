@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
-import { GlobalContext } from '../../../context/Context';
-import Button from '../../button/Button';
-import Like from '../../Like/Like';
-import Image from '../../Image/Image';
+import { GlobalContext } from '../../context/Context';
+import Button from '../../components/button/Button';
+import Like from '../../components/Like/Like';
+import Image from '../../components/Image/Image';
 
 const ProductDetails = () => {
 
