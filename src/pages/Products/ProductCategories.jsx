@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/card/Card';
 import { nanoid } from 'nanoid';
+import { getCategories } from '../../api';
 
 const ProductCategories = () => {
 
     const [categories, setCategories] = useState()
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products/categories')
-            .then(res => res.json())
-            .then(data => setCategories(
+        const loadCategories = async () => {
+            const data = await getCategories()
+            setCategories(
                 data.map(item => ({ id: nanoid(), title: item, image: `${item}.jpg` }))
-            ))
+            )
+        }
+
+        loadCategories()
     }, [])
 
     return (
