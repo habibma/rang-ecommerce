@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
 import './products.scss'
@@ -10,14 +10,21 @@ const Products = () => {
 
   const { products, setSelect, select } = useContext(GlobalContext);
 
-  const prices = products.map(product => product.price)
-  const minPrice = Math.floor(Math.min(...prices))
-  const maxPrice = Math.ceil(Math.max(...prices))
-
   const [price, setPrice] = useState({
-    atLeast: minPrice,
-    atMost: maxPrice
+    atLeast: 0,
+    atMost: 0
   })
+
+  const pricesArray = products.map(product => product.price)
+  const minPrice = Math.floor(Math.min(...pricesArray))
+  const maxPrice = Math.ceil(Math.max(...pricesArray))
+
+  useEffect(() => {
+    setPrice({
+      atLeast: minPrice,
+      atMost: maxPrice,
+    })
+  }, [products])
 
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -85,7 +92,7 @@ const Products = () => {
             {price.atMost}$
           </span>
         </div>
-        { (priceMinFilter || priceMaxFilter) ? <Button type='secondary' onClick={handleChange}>Reset</Button> : null}
+        {(priceMinFilter || priceMaxFilter) ? <Button type='secondary' onClick={handleChange}>Reset</Button> : null}
       </div>
       <div className="products-list">
         {displayedProducts.map(product => <ProductCard key={product.id}>{product}</ProductCard>)}
