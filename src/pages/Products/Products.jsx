@@ -15,6 +15,8 @@ const Products = () => {
     atMost: 0
   })
 
+  const [searchParams, setSearchParams] = useSearchParams()
+
   const pricesArray = products.map(product => product.price)
   const minPrice = Math.floor(Math.min(...pricesArray))
   const maxPrice = Math.ceil(Math.max(...pricesArray))
@@ -26,7 +28,6 @@ const Products = () => {
     })
   }, [products])
 
-  const [searchParams, setSearchParams] = useSearchParams()
 
   function handleChange({ target }) {
     const { name, value } = target;

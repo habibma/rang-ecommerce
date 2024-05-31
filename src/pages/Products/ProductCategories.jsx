@@ -7,22 +7,33 @@ const ProductCategories = () => {
 
     const [categories, setCategories] = useState()
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         const loadCategories = async () => {
             setLoading(true)
-            const data = await getCategories()
-            setCategories(
-                data.map(item => ({ id: nanoid(), title: item, image: `${item}.jpg` }))
-            )
-            setLoading(false)
+
+            try {
+                const data = await getCategories()
+                setCategories(
+                    data.map(item => ({ id: nanoid(), title: item, image: `${item}.jpg` }))
+                )
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false)
+            }
         }
 
         loadCategories()
     }, [])
 
-    if(loading) {
+    if (loading) {
         return <h1>Loading...</h1>
+    }
+
+    if(error) {
+        return <h1>There was an error: {error.message}</h1>
     }
 
     return (
