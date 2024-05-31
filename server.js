@@ -40,6 +40,7 @@ createServer({
     routes() {
         this.namespace = "/api"
         this.logging = false
+        this.timing = 1000;
 
         this.get("/customers", (schema, request) => {
             return schema.customers.all();

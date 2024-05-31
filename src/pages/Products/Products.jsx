@@ -19,7 +19,6 @@ const Products = () => {
     atMost: maxPrice
   })
 
-
   const [searchParams, setSearchParams] = useSearchParams()
 
   function handleChange({ target }) {
@@ -35,7 +34,6 @@ const Products = () => {
       setPrice(prevState => ({ ...prevState, [name]: +value }))
     }
   }
-
 
   const priceMinFilter = +searchParams.get('atLeast')
   const priceMaxFilter = +searchParams.get('atMost')

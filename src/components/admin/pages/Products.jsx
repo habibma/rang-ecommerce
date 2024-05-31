@@ -26,7 +26,6 @@ const Products = () => {
     fetch('../api/products')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setProducts(data.products)
       })
   }
