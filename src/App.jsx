@@ -7,10 +7,14 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import CustomeProfile from './pages/Profile/Profile';
+import { Dashboard as CustomerDashbord, Orders as CustomerOrders, Setting } from './pages/Profile/UserAccount';
+import UserInfo from './pages/Profile/UserInfo';
+import PasswordChange from './pages/Profile/PasswordChange';
+import FavoriteList from './pages/Profile/FavoriteList';
 import ProductsList from './pages/Products/Products';
 import ProductDetails from './pages/Products/[slug]';
-import UserProfile from './pages/Profile/[slug]';
-import SignUp from "./pages/SignUp";
 import PrductDescription from "./pages/Products/PrductDescription";
 import ProductRating from "./pages/Products/ProductRating";
 import ProductPhotos from "./pages/Products/ProductPhotos";
@@ -84,8 +88,13 @@ function App() {
             <Route path="reviews" element={<ProductRating />} />
             <Route path="photos" element={<ProductPhotos />} />
           </Route>
-          <Route path="profile" element={<UserProfile />}>
-            <Route path=":activePage" element={<UserProfile />} />
+          <Route path="profile" element={<CustomeProfile />}>
+            <Route index element={<CustomerDashbord />} />
+            <Route path="orders" element={<CustomerOrders />} />
+            <Route path="info" element={<UserInfo />} />
+            <Route path="password" element={<PasswordChange />} />
+            <Route path="setting" element={<Setting />} />
+            <Route path="favorites" element={<FavoriteList />} />
           </Route>
           <Route path="admin/login" element={<AdminLogin />} />
         </Route>
