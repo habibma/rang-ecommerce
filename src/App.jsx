@@ -27,6 +27,7 @@ import Orders from "./components/admin/pages/Orders";
 import Customer from "./components/admin/pages/Customer";
 import Product from "./components/admin/pages/Product";
 import Dashboard from "./components/admin/pages/Dashboard";
+import { default as AdminLogin } from './components/admin/pages/Login'
 
 
 
@@ -86,6 +87,7 @@ function App() {
           <Route path="profile" element={<UserProfile />}>
             <Route path=":activePage" element={<UserProfile />} />
           </Route>
+          <Route path="admin/login" element={<AdminLogin />} />
         </Route>
         <Route path="admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
