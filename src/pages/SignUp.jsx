@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FormInput from '../components/card/ProductCard';
+import FormInput from '../components/input/FormInput';
 import Button from '../components/button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase'
@@ -30,6 +30,7 @@ const SignUp = () => {
         setSignUpinputs({
             email: "",
             password: "",
+            confirmPassword: ""
         })
     }
 

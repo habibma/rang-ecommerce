@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/Context';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import FormInput from '../components/input/FormInput';
 import Button from '../components/button/Button';
 
@@ -8,6 +8,7 @@ const Login = () => {
 
     const { signInInputs, handleSignIn, isLoggedIn, handleSubmit, error, usernameRef, passwordRef } = useContext(GlobalContext)
 
+    const location = useLocation()
 
     const fileds = [
         {
@@ -37,6 +38,7 @@ const Login = () => {
     return (
         <div className="form-container">
             <form className='form' onSubmit={handleSubmit}>
+                {location.state?.message && <h3 className='login-first'>{location.state.message}</h3>}
                 <h2 className='pro-heading'>Sign In</h2>
                 {fileds.map(field => (
                     <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleSignIn} />

@@ -5,7 +5,7 @@ import Button from "../components/button/Button";
 
 const Checkout = () => {
 
-    const { cartItems, handleCartItems, isLoggedIn, handleOrders } = useContext(GlobalContext)
+    const { cartItems, handleCartItems, handleOrders } = useContext(GlobalContext)
 
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const Checkout = () => {
         });
         handleOrders(cartItems); // send the cart items to the ordered list
         handleCartItems({ type: "CLEAN", product: {} }) // to make the cart empty
-        isLoggedIn ? navigate("/profile/orders") : navigate("/Login");
+        navigate("/profile/orders");
     }
 
     return (

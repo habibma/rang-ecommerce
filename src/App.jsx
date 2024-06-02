@@ -32,6 +32,7 @@ import Customer from "./components/admin/pages/Customer";
 import Product from "./components/admin/pages/Product";
 import Dashboard from "./components/admin/pages/Dashboard";
 import { default as AdminLogin } from './components/admin/pages/Login'
+import AuthRequired from "./components/aothRequired/AuthRequired";
 
 
 
@@ -69,35 +70,45 @@ function App() {
   return (
     <div className=''>
       <Routes>
+
         <Route path="/" element={<UserLayout />}>
+
           <Route index element={<Home />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="products" element={<ProductsList />} />
+
           <Route path="products/:id" element={<ProductDetails />}>
             <Route index element={<PrductDescription />} />
             <Route path="reviews" element={<ProductRating />} />
             <Route path="photos" element={<ProductPhotos />} />
           </Route>
+
           <Route path="categories" element={<Categories />} />
           <Route path="categories/:category" element={<Category />} />
+
           <Route path="categories/:category/:id" element={<ProductDetails />}>
             <Route index element={<PrductDescription />} />
             <Route path="reviews" element={<ProductRating />} />
             <Route path="photos" element={<ProductPhotos />} />
           </Route>
-          <Route path="profile" element={<CustomeProfile />}>
-            <Route index element={<CustomerDashbord />} />
-            <Route path="orders" element={<CustomerOrders />} />
-            <Route path="info" element={<UserInfo />} />
-            <Route path="password" element={<PasswordChange />} />
-            <Route path="setting" element={<Setting />} />
-            <Route path="favorites" element={<FavoriteList />} />
+
+          <Route element={<AuthRequired />}>
+            <Route path="profile" element={<CustomeProfile />}>
+              <Route index element={<CustomerDashbord />} />
+              <Route path="orders" element={<CustomerOrders />} />
+              <Route path="info" element={<UserInfo />} />
+              <Route path="password" element={<PasswordChange />} />
+              <Route path="setting" element={<Setting />} />
+              <Route path="favorites" element={<FavoriteList />} />
+            </Route>
           </Route>
+
           <Route path="admin/login" element={<AdminLogin />} />
         </Route>
+
         <Route path="admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="customers" element={<Customers />} />
@@ -106,6 +117,7 @@ function App() {
           <Route path="products/:id" element={<Product />} />
           <Route path="orders" element={<Orders />} />
         </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div >
