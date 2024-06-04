@@ -36,7 +36,7 @@ const Login = () => {
       .then(data => {
         setError(null)
         localStorage.setItem("loggedIn", true)
-        navigate('/admin')
+        navigate('/admin', {replace: true})
       })
       .catch( err => {
         setError(err)
