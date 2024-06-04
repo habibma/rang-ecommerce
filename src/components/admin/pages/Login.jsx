@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import FormInput from '../../input/FormInput';
 import Button from '../../button/Button';
 import { loginAdmin } from '../../../api';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -15,6 +15,8 @@ const Login = () => {
   const [status, setStatus] = useState('idle')
 
   const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from || '/admin';
 
   const handleChange = ({ target }) => {
     const { value, name } = target;
@@ -36,9 +38,9 @@ const Login = () => {
       .then(data => {
         setError(null)
         localStorage.setItem("loggedIn", true)
-        navigate('/admin', {replace: true})
+        navigate(from, { replace: true })
       })
-      .catch( err => {
+      .catch(err => {
         setError(err)
       }
       )
@@ -79,9 +81,9 @@ const Login = () => {
         {fileds.map(field => (
           <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleChange} />
         ))}
-        <Button type='primary' disabled={status === "submitting"}>{ status === "submitting" ? "Logging in..." : "Log in"}</Button>
+        <Button type='primary' disabled={status === "submitting"}>{status === "submitting" ? "Logging in..." : "Log in"}</Button>
         <small>Username: admin | Pass:123</small>
-        { error?.message && <h3 className='fieldError'>{error.message}</h3>}
+        {error?.message && <h3 className='fieldError'>{error.message}</h3>}
       </form>
     </div>
   );
