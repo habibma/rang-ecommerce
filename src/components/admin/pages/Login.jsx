@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import FormInput from '../../input/FormInput';
 import Button from '../../button/Button';
+import { loginAdmin } from '../../../api';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -9,9 +11,12 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('idle')
 
-  const handleSignIn = ({ target }) => {
+  const navigate = useNavigate()
+
+  const handleChange = ({ target }) => {
     const { value, name } = target;
     setSignIninputs(prevState => {
       return ({
@@ -26,6 +31,20 @@ const Login = () => {
   const handleSubmit = event => {
     event.preventDefault();
     setSignIninputs({ username: "", password: "" })
+    setStatus('submitting')
+    loginAdmin(signInInputs)
+      .then(data => {
+        setError(null)
+        localStorage.setItem("loggedIn", true)
+        navigate('/admin')
+      })
+      .catch( err => {
+        setError(err)
+      }
+      )
+      .finally(() =>
+        setStatus('idle')
+      )
   }
 
   const fileds = [
@@ -58,12 +77,12 @@ const Login = () => {
       <form className='form' onSubmit={handleSubmit}>
         <h2 className='pro-heading'>Admin Log In</h2>
         {fileds.map(field => (
-          <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleSignIn} />
+          <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleChange} />
         ))}
-        <Button type='primary'>Log in</Button>
-        <small>Username: admin Pass:123</small>
+        <Button type='primary' disabled={status === "submitting"}>{ status === "submitting" ? "Logging in..." : "Log in"}</Button>
+        <small>Username: admin | Pass:123</small>
+        { error?.message && <h3 className='fieldError'>{error.message}</h3>}
       </form>
-      <p className='fieldError'>{error}</p>
     </div>
   );
 }

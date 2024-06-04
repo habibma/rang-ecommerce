@@ -1,4 +1,4 @@
-import { createServer, Model, Factory } from "miragejs"
+import { createServer, Model, Factory, Response } from "miragejs"
 import { faker } from '@faker-js/faker';
 import { nanoid } from 'nanoid';
 
@@ -7,7 +7,8 @@ import user from './src/assets/imgs/user.png'
 createServer({
     models: {
         customer: Model,
-        product: Model
+        product: Model,
+        user: Model
     },
 
     factories: {
@@ -92,6 +93,20 @@ createServer({
             return schema.products.find(id).destroy()
         })
 
+        this.post("/login", (schema, request) => {
+            const { username, password } = JSON.parse(request.requestBody)
+            const foundUser = schema.users.findBy({ username, password })
+            if (!foundUser) {
+                return new Response(401, {}, { message: "No user with those credentials found!" })
+            }
+
+            foundUser.password = undefined
+            return {
+                user: foundUser,
+                token: "Enjoy your pizza, here's your tokens."
+            }
+        })
+
         this.passthrough('https://fakestoreapi.com/**') // to pass API requests go to an external domain
         this.passthrough('https://identitytoolkit.googleapis.com/**')  // Allow all requests containing /firebase
     },
@@ -115,5 +130,7 @@ createServer({
                 description: faker.lorem.paragraphs(2),
             });
         }
+
+        server.create("user", { id: "123", email: "b@b.com", username:"admin", password: "123", name: "Bob" })
     }
 })

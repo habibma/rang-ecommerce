@@ -33,6 +33,7 @@ import Product from "./components/admin/pages/Product";
 import Dashboard from "./components/admin/pages/Dashboard";
 import { default as AdminLogin } from './components/admin/pages/Login'
 import AuthRequired from "./components/aothRequired/AuthRequired";
+import AdminAothRequired from "./components/aothRequired/AdminAothRequired";
 
 
 
@@ -106,18 +107,19 @@ function App() {
             </Route>
           </Route>
 
-          <Route path="admin/login" element={<AdminLogin />} />
+          <Route path="admin-login" element={<AdminLogin />} />
         </Route>
 
-        <Route path="admin" element={<AdminLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="customers" element={<Customers />} />
-          <Route path="customers/:id" element={<Customer />} />
-          <Route path="products" element={<Products />} />
-          <Route path="products/:id" element={<Product />} />
-          <Route path="orders" element={<Orders />} />
+        <Route element={<AdminAothRequired />}>
+          <Route path="admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="customers" element={<Customers />} />
+            <Route path="customers/:id" element={<Customer />} />
+            <Route path="products" element={<Products />} />
+            <Route path="products/:id" element={<Product />} />
+            <Route path="orders" element={<Orders />} />
+          </Route>
         </Route>
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div >
