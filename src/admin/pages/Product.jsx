@@ -1,6 +1,6 @@
 import React from 'react'
 import Single from '../Single';
-import {singleProduct} from '../../../data'
+import {singleProduct} from '../../data'
 
 const Product = () => {
 

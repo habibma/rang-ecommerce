@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import FormInput from '../../input/FormInput';
-import Button from '../../button/Button';
-import { loginAdmin } from '../../../api';
+import FormInput from '../../components/input/FormInput';
+import Button from '../../components/button/Button';
+import { loginAdmin } from '../../api';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 

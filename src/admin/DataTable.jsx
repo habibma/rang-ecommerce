@@ -2,8 +2,8 @@ import { Box } from '@mui/material'
 import { DataGrid, GridToolbar } from '@mui/x-data-grid'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import editIcon from '../../assets/imgs/edit.svg';
-import deleteIcon from '../../assets/imgs/delete.svg';
+import editIcon from '../assets/imgs/edit.svg';
+import deleteIcon from '../assets/imgs/delete.svg';
 
 const DataTable = ({ columns, rows, slug, handleDelete }) => {
 

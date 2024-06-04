@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import DataTable from '../DataTable'
-import user from '../../../assets/imgs/user.png'
+import user from '../../assets/imgs/user.png'
 import Add from '../Add'
 // import { sales } from '../../../data'
 

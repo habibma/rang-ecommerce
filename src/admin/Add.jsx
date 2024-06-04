@@ -1,6 +1,6 @@
 import React from 'react'
-import FormInput from '../input/FormInput';
-import Button from '../button/Button';
+import FormInput from '../components/input/FormInput';
+import Button from '../components/button/Button';
 
 const Add = (props) => {
 
@@ -9,7 +9,7 @@ const Add = (props) => {
 
     return (
         <div className='add-page'>
-            <div className="modal">
+            <div className="modal-box">
                 <span className='close-btn' onClick={() => setOpen(false)}>X</span>
                 <h2>Add new {slug}</h2>
                 <form onSubmit={onSubmit}>

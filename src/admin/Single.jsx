@@ -1,5 +1,5 @@
 import React from 'react'
-import user from '../../assets/imgs/user.png'
+import user from '../assets/imgs/user.png'
 
 const Single = ({ id, img, title, info, activities }) => {
 

@@ -22,16 +22,16 @@ import Categories from "./pages/Categories/Categories";
 import Category from "./pages/Categories/[category]";
 import NotFound from "./pages/NotFound";
 
-import Navbar from "./components/admin/Navbar";
-import { default as AdminFooter } from "./components/admin/Footer";
-import Menu from "./components/admin/Menu";
-import Customers from "./components/admin/pages/Customers";
-import Products from "./components/admin/pages/Products";
-import Orders from "./components/admin/pages/Orders";
-import Customer from "./components/admin/pages/Customer";
-import Product from "./components/admin/pages/Product";
-import Dashboard from "./components/admin/pages/Dashboard";
-import { default as AdminLogin } from './components/admin/pages/Login'
+import Navbar from "./admin/Navbar";
+import { default as AdminFooter } from "./admin/Footer";
+import Menu from "./admin/Menu";
+import Customers from "./admin/pages/Customers";
+import Products from "./admin/pages/Products";
+import Orders from "./admin/pages/Orders";
+import Customer from "./admin/pages/Customer";
+import Product from "./admin/pages/Product";
+import Dashboard from "./admin/pages/Dashboard";
+import { default as AdminLogin } from './admin/pages/Login'
 import AuthRequired from "./components/aothRequired/AuthRequired";
 import AdminAothRequired from "./components/aothRequired/AdminAothRequired";
 

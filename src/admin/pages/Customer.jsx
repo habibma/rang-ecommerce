@@ -1,6 +1,6 @@
 import React from 'react'
 import Single from '../Single'
-import { singleCustomer } from '../../../data'
+import { singleCustomer } from '../../data'
 
 const Customer = () => {
 
