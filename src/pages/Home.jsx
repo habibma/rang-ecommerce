@@ -31,7 +31,7 @@ const Home = () => {
             <section className="row flex justify">
                 <ProductCategories />
             </section>
-            <Modal onOpen={() => console.log('clicked')}>
+            <Modal>
                 <Modal.Button>
                     {(func) => <CallToAction buttonText='Sign In' onClick={func}>See personalized recommendations</CallToAction>}
                 </Modal.Button>
