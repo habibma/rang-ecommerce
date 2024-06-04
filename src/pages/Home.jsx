@@ -5,6 +5,8 @@ import ProductCategories from './Products/ProductCategories';
 import image_1 from '../assets/imgs/1-unsplash.jpg'
 import image_2 from '../assets/imgs/2-unsplash.jpg'
 import image_3 from '../assets/imgs/3-unsplash.jpg'
+import Modal from '../components/modal/index';
+import Login from './Login'
 
 const Home = () => {
 
@@ -25,11 +27,18 @@ const Home = () => {
 
     return (
         <>
-            <Carousel data={slides}/>
+            <Carousel data={slides} />
             <section className="row flex justify">
                 <ProductCategories />
             </section>
-            <CallToAction buttonText='Sign In'>See personalized recommendations</CallToAction>
+            <Modal onOpen={() => console.log('clicked')}>
+                <Modal.Button>
+                    {(func) => <CallToAction buttonText='Sign In' onClick={func}>See personalized recommendations</CallToAction>}
+                </Modal.Button>
+                <Modal.Content>
+                    <Login />
+                </Modal.Content>
+            </Modal>
             <ScrollToTop />
         </>
     );
