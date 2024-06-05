@@ -1,7 +1,9 @@
+import { db } from "./firebase"
+import { getDocs, collection } from "firebase/firestore/lite"
 
 export const getCategories = async () => {
     const res = await fetch('https://fakestoreapi.com/products/categories')
-    if(!res.ok) {
+    if (!res.ok) {
         throw {
             message: "Failed to fetch categories",
             statusText: res.statusText,
@@ -27,4 +29,14 @@ export const loginAdmin = async creds => {
     }
 
     return data
+}
+
+const productCollectionRef = collection(db, "products");
+export const getCollectionProducts = async () => {
+    const querySnapshot = await getDocs(productCollectionRef);
+    const products = querySnapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return products
 }

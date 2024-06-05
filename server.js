@@ -109,6 +109,7 @@ createServer({
 
         this.passthrough('https://fakestoreapi.com/**') // to pass API requests go to an external domain
         this.passthrough('https://identitytoolkit.googleapis.com/**')  // Allow all requests containing /firebase
+        this.passthrough("https://firestore.googleapis.com/**")
     },
 
     seeds(server) {

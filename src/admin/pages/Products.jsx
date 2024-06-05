@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Add from '../Add'
 import DataTable from '../DataTable';
-// import { products } from '../../../data'
+import { getCollectionProducts } from '../../api';
 
 const Products = () => {
 
@@ -11,22 +11,19 @@ const Products = () => {
   const [postRespose, setPostResponse] = useState('')
 
   const handleChange = ({ target }) => {
-      const { value, name } = target;
-      setinputs(prevState => {
-        console.log(inputs[name]);
-        return ({
-          ...prevState,
-          [name]: value
-        })
+    const { value, name } = target;
+    setinputs(prevState => {
+      return ({
+        ...prevState,
+        [name]: value
       })
-    }
-
+    })
+  }
 
   function fetchData() {
-    fetch('../api/products')
-      .then(response => response.json())
+    getCollectionProducts()
       .then(data => {
-        setProducts(data.products)
+        setProducts(data)
       })
   }
 
@@ -34,7 +31,7 @@ const Products = () => {
     fetchData()
   }, [])
 
-  function postCustomer(product) {
+  function postProduct(product) {
     fetch("../api/products", {
       method: "POST",
       body: JSON.stringify({
@@ -67,19 +64,17 @@ const Products = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    postCustomer(inputs)
+    postProduct(inputs)
     clearForm()
     fetchData();
     setOpen(false)
   }
 
   const handleDelete = (id) => {
-    console.log("row was deleted");
     fetch(`../api/products/${id}`, {
       method: "DELETE",
     })
       .then(res => res.text())
-      .then(res => console.log(res))
     fetchData();
   };
 
@@ -138,7 +133,7 @@ const Products = () => {
         <button onClick={() => setOpen(true)}>Add Product</button>
         <p className='notif'>{postRespose}</p>
       </div>
-      <DataTable slug="products" columns={columns} rows={products} handleDelete={handleDelete}/>
+      <DataTable slug="products" columns={columns} rows={products} handleDelete={handleDelete} />
       {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} required />}
     </div>
   )
