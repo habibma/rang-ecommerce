@@ -7,7 +7,6 @@ import Single from '../Single';
 const Product = () => {
 
   const { id } = useParams()
-  console.log(id)
 
   const [product, setProduct] = useState()
 
@@ -36,8 +35,6 @@ const Product = () => {
         activities: activities,
       }))
   }, [id])
-
-  console.log(product)
 
   return (
     <div className='product-single-page'>
