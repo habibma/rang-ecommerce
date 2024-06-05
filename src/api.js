@@ -1,5 +1,5 @@
 import { db } from "./firebase"
-import { getDocs, collection } from "firebase/firestore/lite"
+import { getDocs, collection, doc, getDoc } from "firebase/firestore/lite"
 
 export const getCategories = async () => {
     const res = await fetch('https://fakestoreapi.com/products/categories')
@@ -39,4 +39,18 @@ export const getCollectionProducts = async () => {
         id: doc.id
     }))
     return products
+}
+
+export const getProduct = async (id) => {
+    const docRef = doc(db, "products", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      // docSnap.data() will be undefined in this case
+      throw {
+        message: "No such document!",
+    }
+    }
 }
