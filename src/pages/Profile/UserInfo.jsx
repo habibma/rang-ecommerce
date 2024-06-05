@@ -4,6 +4,7 @@ import { updateProfile } from "firebase/auth";
 import FormInput from "../../components/input/FormInput";
 import Button from "../../components/button/Button";
 import Avatar from "../../components/avatar/Avatar";
+import { getCustomer, updateCustomer } from "../../api";
 
 const UserInfo = () => {
 
@@ -16,6 +17,8 @@ const UserInfo = () => {
         number: "",
         postalCode: ""
     });
+    const [error, setError] = useState()
+    const [status, setStatus] = useState('idle')
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -30,22 +33,32 @@ const UserInfo = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        //To update profile
-        updateProfile(auth.currentUser, userInfoInputs).then(() => {
-            console.log("updated")
-        }).catch((error) => {
+        setStatus('submitting')
+
+        //To update email
+        updateProfile(auth.currentUser, inputs)
+        .then(() => {
+            //To set data on customers database
+            updateCustomer(inputs)
+        })
+        .catch((error) => {
             // An error occurred
-            console.log(error)
-        });
+            setError(error)
+        })
+        .finally(() => setStatus('idle')
+        );
+
     }
 
     //to show user data as default values of info page
     const user = auth.currentUser;
     useEffect(() => {
         if (user !== null) {
-            const displayName = user.displayName;
+            // const displayName = user.displayName;
             const email = user.email;
-            setInputs(prevState => ({ ...prevState, displayName, email }))
+
+            getCustomer(email)
+                .then(data => setInputs(prevState => ({ ...prevState, ...data })))
         }
     }, [user])
 
@@ -125,11 +138,12 @@ const UserInfo = () => {
         },
     ]
 
+    console.log(status);
     return (
         <div className="row">
             <h3 className="pro-heading">Personal Information</h3>
             <div className="profile-picture">
-                <Avatar>{user.displayName[0]}</Avatar>
+                <Avatar>{user.displayName}</Avatar>
             </div>
             <form className='form' onSubmit={handleSubmit}>
                 <fieldset className="fieldset">
@@ -144,7 +158,8 @@ const UserInfo = () => {
                         <FormInput key={filed.id} {...filed} value={inputs[filed.name]} onChange={handleChange} />
                     ))}
                 </fieldset>
-                <Button type="secondary">Save Changes</Button>
+                <Button type="secondary" disabled={status === "submitting"}>{status === 'submitting'? 'Submitting...' : 'Save Changes'}</Button>
+                {error && <p>{error}</p>}
             </form>
         </div >
     )

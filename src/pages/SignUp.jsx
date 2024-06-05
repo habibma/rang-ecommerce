@@ -4,6 +4,8 @@ import Button from '../components/button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase'
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addCustomer } from '../api';
+import { nanoid } from 'nanoid';
 
 const SignUp = () => {
 
@@ -36,25 +38,21 @@ const SignUp = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(inputs.email)) {
-            setError("Invalid email address");
-            return;
-        }
-        if (inputs.password !== inputs.confirmPassword) {
-            setError("your password is not typed samely!")
-            return;
-        }
+
         createUserWithEmailAndPassword(auth, inputs.email, inputs.password)
             .then((userCredential) => {
-                // Signed up
                 // const user = userCredential.user;
                 clearForm();
+                //to add customer to customers database
+                addCustomer({
+                    id: `ID-${nanoid(4)}`,
+                    email: inputs.email
+                })
                 navigate('/login') // Redirect to the login page after successful signup
             })
             .catch((error) => {
-                const errorCode = error.code;
+                // const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
                 setError(errorMessage);
             });
     }
