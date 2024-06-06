@@ -344,7 +344,7 @@
                 border-radius: 2px;
             }
 
-            &:has(#inStock) {
+            &:has(input[type=checkbox]) {
                 flex-direction: row;
                 align-items: center
             }

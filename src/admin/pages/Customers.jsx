@@ -112,7 +112,7 @@ const Customers = () => {
       field: 'isVerified',
       headerName: 'Verified',
       maxWidth: 100,
-      type: 'boolean',
+      type: 'checkbox',
       editable: false,
     },
     {
