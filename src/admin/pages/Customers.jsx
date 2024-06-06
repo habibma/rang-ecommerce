@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DataTable from '../DataTable'
 import user from '../../assets/imgs/user.png'
 import Add from '../Add'
-// import { sales } from '../../../data'
-
+import { deleteCustomer, getCustomers } from '../../api'
 
 const Customers = () => {
 
@@ -14,10 +13,9 @@ const Customers = () => {
 
 
   function fetchData() {
-    fetch('../api/customers')
-      .then(response => response.json())
+    getCustomers()
       .then(data => {
-        setCustomers(data.customers)
+        setCustomers(data)
       })
   }
   useEffect(() => {
@@ -32,7 +30,6 @@ const Customers = () => {
         [name]: value
       })
     })
-    console.log(inputs);
   }
 
   function postCustomer(customer) {
@@ -65,7 +62,7 @@ const Customers = () => {
       isVerified: ""
     })
   }
-  
+
   const handleSubmit = event => {
     event.preventDefault();
     postCustomer(inputs)
@@ -75,13 +72,11 @@ const Customers = () => {
   }
 
   const handleDelete = (id) => {
-    console.log("row was deleted");
-    fetch(`../api/customers/${id}`, {
-      method: "DELETE",
-    })
-      .then(res => res.text())
-      .then(res => console.log(res))
-    fetchData();
+    console.log(id, 'deleted')
+    // deleteCustomer(id)
+    //   .then(
+    //     console.log('deleted')
+    //   )
   };
 
   const columns = [
@@ -96,8 +91,14 @@ const Customers = () => {
       },
     },
     {
-      field: 'userName',
-      headerName: 'Username',
+      field: 'displayName',
+      headerName: 'Firstname',
+      maxWidth: 170,
+      editable: false,
+    },
+    {
+      field: 'lastName',
+      headerName: 'LastName',
       maxWidth: 170,
       editable: false,
     },

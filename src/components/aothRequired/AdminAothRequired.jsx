@@ -6,7 +6,6 @@ const AdminAothRequired = () => {
     const auth = localStorage.getItem('loggedIn');
 
     const { pathname } = useLocation()
-    console.log(pathname);
 
     if (!auth) {
         return <Navigate
