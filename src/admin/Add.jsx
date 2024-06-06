@@ -16,7 +16,7 @@ const Add = (props) => {
                     {columns
                         .filter(item => item.field !== 'ID' && item.field !== 'img')
                         .map(column => (
-                            <div className="item">
+                            <div className="item" key={column.field}>
                                 <label htmlFor={column.field}>{column.headerName}</label>
                                 <FormInput key={column.field} id={column.field} name={column.field} type={column.type} placeholder={column.headerName} value ={value[column.field]} {...otherProps} />
                             </div>
