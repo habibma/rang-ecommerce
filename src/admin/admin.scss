@@ -8,6 +8,19 @@
     align-items: center;
     justify-content: space-between;
 
+    @include sm {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    span {
+        font-size: 14px;
+
+        @include sm {
+        font-size: 12px;
+        }
+    }
+
     .admin-logo {
         font-weight: bold;
         gap: 10px;
@@ -26,8 +39,15 @@
             }
         }
 
+
         .notification {
             position: relative;
+
+            .icon {
+                @include sm {
+                    display: initial;
+                }
+            }
 
             span {
                 background-color: red;
@@ -52,6 +72,12 @@
 
             .profile-img {
                 width: 45px;
+            }
+
+            .item-title {
+                @include md {
+                    display: none;
+                }
             }
         }
 
