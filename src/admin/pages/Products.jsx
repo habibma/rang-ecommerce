@@ -11,11 +11,11 @@ const Products = () => {
   const [postRespose, setPostResponse] = useState('')
 
   const handleChange = ({ target }) => {
-    const { value, name } = target;
+    const { value, name, type, checked } = target;
     setinputs(prevState => {
       return ({
         ...prevState,
-        [name]: value
+        [name]: type === "checkbox" ? checked : value
       })
     })
   }
@@ -54,11 +54,11 @@ const Products = () => {
   const clearForm = () => {
     setinputs({
       id: "",
-      // avatar: "",
-      userName: "",
-      email: "",
-      amountOfSale: "",
-      isVerified: ""
+      productName: "",
+      category: "",
+      color: "",
+      price: "",
+      inStock: false
     })
   }
 
@@ -119,7 +119,7 @@ const Products = () => {
     {
       field: 'inStock',
       headerName: 'In Stock',
-      type: 'boolean',
+      type: 'checkbox',
       maxWidth: 110,
       editable: true,
     },

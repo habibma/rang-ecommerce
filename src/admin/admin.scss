@@ -188,8 +188,6 @@
         }
     }
 
-
-
     .list {
         .list-item {
             display: flex;
@@ -324,6 +322,11 @@
                 outline: none;
                 border: 1px solid #ddd;
                 border-radius: 2px;
+            }
+
+            &:has(#inStock) {
+                flex-direction: row;
+                align-items: center
             }
         }
 
