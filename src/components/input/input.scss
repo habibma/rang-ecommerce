@@ -33,9 +33,17 @@
       border-radius: 5px;
       font-size: 14px;
       color: rgba(#332922, 0.9);
+      background-color: #dcb;
 
       @media screen and (max-width: 470px) {
         padding: 10px 10px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .theme-a.adaptive {
+          background: #332922;
+          color: rgb(255, 255, 255);
+        }
       }
     }
 }
