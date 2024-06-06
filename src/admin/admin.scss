@@ -54,6 +54,26 @@
                 width: 45px;
             }
         }
+
+        .shop {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ddd;
+            padding: 5px;
+
+            &:hover {
+                background-color: #384256;
+            }
+        }
+
+        .log-out {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
     }
 
 }
