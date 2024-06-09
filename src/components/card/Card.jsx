@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../button/Button'
 import { Link } from 'react-router-dom'
+import './card.scss'
 
 const Card = ({ img = null, title, description = null, button = null, href = null}) => {
     return (

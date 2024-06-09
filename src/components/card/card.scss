@@ -74,6 +74,7 @@
             height: 100%;
             object-fit: cover;
         }
+    }
 
     .card--frame, title, button {
         :hover {
@@ -81,5 +82,8 @@
             cursor: pointer;
         }
     }
+
+    .title {
+        font-size: 1.5em;
     }
 }
