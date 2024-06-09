@@ -5,6 +5,7 @@ import './products.scss'
 import ProductCard from '../../components/card/ProductCard';
 import Menu from '../../components/Menu/index';
 import Button from '../../components/button/Button';
+import InputRange from '../../components/input/InputRange';
 
 const Products = () => {
 
@@ -63,36 +64,8 @@ const Products = () => {
             <Menu.Item value="women's clothing">women's</Menu.Item>
           </Menu.Dropdown>
         </Menu>
-        <div className="price">
-          <label htmlFor='price-range-min'>Min Price:</label>
-          <input
-            type='range'
-            id='price-range-min'
-            min={minPrice}
-            max={maxPrice}
-            name='atLeast'
-            value={price.atLeast}
-            onChange={handleChange}
-          />
-          <span>
-            {price.atLeast}$
-          </span>
-        </div>
-        <div className="price">
-          <label htmlFor='price-range-max'>Max Price:</label>
-          <input
-            type='range'
-            id='price-range-max'
-            min={minPrice}
-            max={maxPrice}
-            name='atMost'
-            value={price.atMost}
-            onChange={handleChange}
-          />
-          <span>
-            {price.atMost}$
-          </span>
-        </div>
+        <InputRange min={minPrice} max={maxPrice} name='atLeast' value={price.atLeast} onChange={handleChange} lable='Min Price:'>{price.atLeast}$</InputRange>
+        <InputRange min={minPrice} max={maxPrice} name='atMost' value={price.atMost} onChange={handleChange} lable='Max Price:'>{price.atMost}$</InputRange>
         {(priceMinFilter || priceMaxFilter) ? <Button type='secondary' onClick={handleChange}>Reset</Button> : null}
       </div>
       <div className="products-list">
