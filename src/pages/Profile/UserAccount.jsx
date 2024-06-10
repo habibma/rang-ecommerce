@@ -23,6 +23,7 @@ export const Orders = () => {
                     <tr>
                         <th>Order ID</th>
                         <th>Date</th>
+                        <th>Details</th>
                         <th>Status</th>
                         <th>Price</th>
                         <th>action</th>
@@ -34,8 +35,9 @@ export const Orders = () => {
                             <tr key={order.orderID}>
                                 <td>{order.orderID}</td>
                                 <td>{order.date}</td>
+                                <td>{order.details}</td>
                                 <td>{order.status}</td>
-                                <td>{order.price}</td>
+                                <td>{(order.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
                                 <td><button className="button">Edit</button></td>
                             </tr>
                         )

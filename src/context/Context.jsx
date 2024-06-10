@@ -152,7 +152,7 @@ const GlobalState = ({ children }) => {
             const newArray = [...prevState]
             newArray.push({
                 orderID: nanoid(),
-                //details: cartItems.map(item => <li>{item.title}</li>),
+                details: cartItems.map(item => item.title),
                 date: Date().toString(),
                 status: "on it's way",
                 price: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),

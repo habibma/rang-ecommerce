@@ -48,15 +48,15 @@ const Checkout = () => {
                 <tfoot>
                     <tr>
                         <td><b>Total</b></td>
-                        <td colSpan="2"><b>{cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)}</b></td>
+                        <td colSpan="2"><b>{(cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</b></td>
                     </tr>
                 </tfoot>
             </table>
-            <div className="paying-methods">
+            {/* <div className="paying-methods">
                 <div className="item">Dedit Card</div>
                 <div className="item">Credit Card</div>
                 <div className="item">Pay Pal</div>
-            </div>
+            </div> */}
             <form className="iban-info" onSubmit={hadleSubmit}>
                 <input
                     type="type"

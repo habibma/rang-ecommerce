@@ -48,7 +48,7 @@ const Cart = () => {
                             </div>
                         ))}
                     </div>
-                    <div><b>Total:</b> <span>{cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)} $</span></div>
+                    <div><b>Total:</b> <span>{(cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0).toLocaleString('en-US', { style: 'currency', currency: 'USD' }))}</span></div>
                     <Link to="/checkout"><Button type="primary">Checkout</Button></Link>
                 </section>
             }
