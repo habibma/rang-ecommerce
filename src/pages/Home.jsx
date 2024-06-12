@@ -1,3 +1,5 @@
+import { Suspense, lazy } from 'react';
+
 import Carousel from '../components/carousel/Carousel';
 import CallToAction from '../components/callToAction/CallToAction';
 import ScrollToTop from '../components/scrollToTop/ScrollToTop';
@@ -6,7 +8,11 @@ import image_1 from '../assets/imgs/1-unsplash.jpg'
 import image_2 from '../assets/imgs/2-unsplash.jpg'
 import image_3 from '../assets/imgs/3-unsplash.jpg'
 import Modal from '../components/modal/index';
-import Login from './Login'
+// import Login from './Login'
+
+const Login = lazy(() => {
+    return import('./Login')
+})
 
 const Home = () => {
 
@@ -36,7 +42,9 @@ const Home = () => {
                     {(func) => <CallToAction buttonText='Sign In' onClick={func}>See personalized recommendations</CallToAction>}
                 </Modal.Button>
                 <Modal.Content>
-                    <Login />
+                    <Suspense fallback={<h2>Loading...</h2>}>
+                        <Login />
+                    </Suspense>
                 </Modal.Content>
             </Modal>
             <ScrollToTop />
