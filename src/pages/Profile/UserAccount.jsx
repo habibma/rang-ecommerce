@@ -1,6 +1,7 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { GlobalContext } from "../../context/Context"
 import Button from "../../components/button/Button"
+import { getOrders } from "../../api"
 
 export const Dashboard = () => {
     return (
@@ -13,7 +14,19 @@ export const Dashboard = () => {
 
 export const Orders = () => {
 
-    const { orders } = useContext(GlobalContext);
+    // const { orders } = useContext(GlobalContext);
+
+    const [orders, setOrders] = useState()
+
+    const fetchData = () => {
+        getOrders()
+            .then(data => setOrders(data))
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [orders])
+
 
     return (
         <div className="row">
@@ -30,14 +43,14 @@ export const Orders = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {orders.map(order => {
+                    {orders && orders.map(order => {
                         return (
                             <tr key={order.orderID}>
                                 <td>{order.orderID}</td>
                                 <td>{order.date}</td>
                                 <td>{order.details}</td>
                                 <td>{order.status}</td>
-                                <td>{(order.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+                                <td>{(order.price)}</td>
                                 <td><button className="button">Edit</button></td>
                             </tr>
                         )

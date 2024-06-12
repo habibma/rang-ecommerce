@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import { GlobalContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/button/Button";
+import { nanoid } from "nanoid";
+import { addOrder } from "../api";
 
 const Checkout = () => {
 
-    const { cartItems, handleCartItems, handleOrders } = useContext(GlobalContext)
+    const { cartItems, handleCartItems, handleOrders, orders } = useContext(GlobalContext)
 
     const navigate = useNavigate();
 
@@ -21,6 +23,15 @@ const Checkout = () => {
             bic: ""
         });
         handleOrders(cartItems); // send the cart items to the ordered list
+
+        const orderToSave =  {
+            id: `ORDER-${nanoid(4)}`,
+            status: 'On_the_way',
+            date: Date().toString(),
+            title: cartItems.map(obj => obj.title),
+            price: cartItems.reduce((acc, curr) => acc + curr.price, 0)
+        }
+        addOrder(orderToSave)
         handleCartItems({ type: "CLEAN", product: {} }) // to make the cart empty
         navigate("/profile/orders");
     }

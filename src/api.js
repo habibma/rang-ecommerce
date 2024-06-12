@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid"
 import { db } from "./firebase"
 import { getDocs, collection, doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore/lite"
 
@@ -31,6 +32,7 @@ export const loginAdmin = async creds => {
     return data
 }
 
+//products
 const productCollectionRef = collection(db, "products");
 export const getCollectionProducts = async () => {
     const querySnapshot = await getDocs(productCollectionRef);
@@ -55,6 +57,8 @@ export const getProduct = async (id) => {
     }
 }
 
+
+//customers
 export const addCustomer = async (customer) => {
     const customerRef = doc(db, "customers", customer.email)
     await setDoc(customerRef, customer);
@@ -92,4 +96,21 @@ export const getCustomers = async () => {
 export const deleteCustomer = async (id) => {
     const customerRef = doc(db, 'customers', id);
     await deleteDoc(customerRef);
+}
+
+//orders
+export const addOrder = async (order) => {
+    const orderRef = doc(db, "orders", order.id)
+    await setDoc(orderRef, order);
+}
+
+const ordersCollectionRef = collection(db, "orders");
+export const getOrders = async () => {
+    const querySnapshot = await getDocs(ordersCollectionRef)
+    const orders = querySnapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+    }));
+
+    return orders;
 }
