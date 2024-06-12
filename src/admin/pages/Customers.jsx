@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import DataTable from '../DataTable'
 import user from '../../assets/imgs/user.png'
-import Add from '../Add'
 import { deleteCustomer, getCustomers } from '../../api'
+
+const Add = lazy(() => {
+  return import('../Add')
+})
 
 const Customers = () => {
 
@@ -132,7 +135,9 @@ const Customers = () => {
         <p className='notif'>{postRespose}</p>
       </div>
       <DataTable slug='customers' columns={columns} rows={customers} handleDelete={handleDelete} />
-      {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} required />}
+      <Suspense fallback={<h2>Loading...</h2>}>
+        {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} required />}
+      </Suspense>
     </div>
   )
 }

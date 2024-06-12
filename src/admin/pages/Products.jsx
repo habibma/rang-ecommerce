@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Add from '../Add'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import DataTable from '../DataTable';
 import { getCollectionProducts } from '../../api';
+
+const Add = lazy(()=> {
+  return import('../Add')
+})
 
 const Products = () => {
 
@@ -134,7 +137,9 @@ const Products = () => {
         <p className='notif'>{postRespose}</p>
       </div>
       <DataTable slug="products" columns={columns} rows={products} handleDelete={handleDelete} />
-      {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} required />}
+      <Suspense fallback={<h2>Loading...</h2>}>
+        {open && <Add slug="product" columns={columns} setOpen={setOpen} value={inputs} onChange={handleChange} onSubmit={handleSubmit} required />}
+      </Suspense>
     </div>
   )
 }
