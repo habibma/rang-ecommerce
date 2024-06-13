@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
 import './products.scss'
@@ -18,7 +18,7 @@ const Products = () => {
 
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const pricesArray = products.map(product => product.price)
+  const pricesArray = useMemo(()=> products.map(product => product.price), [products])
   const minPrice = Math.floor(Math.min(...pricesArray))
   const maxPrice = Math.ceil(Math.max(...pricesArray))
 
