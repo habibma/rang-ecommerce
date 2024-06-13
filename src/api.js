@@ -115,6 +115,11 @@ export const getOrders = async () => {
     return orders;
 }
 
+// export const updeteOrder = async order => {
+//     const orderRef = doc(db, "orders", order.id);
+//     await updateDoc(orderRef, order);
+// }
+
 // export const addUserOrder = async (order, userID) => {
 //  const orderRef = doc(db, 'customers', userID, )
 //  await setDoc(orderRef, data);

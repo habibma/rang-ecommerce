@@ -23,18 +23,18 @@ export const Dashboard = () => {
 
 export const Orders = () => {
 
-    // const { orders } = useContext(GlobalContext);
+    const { orders } = useContext(GlobalContext);
 
-    const [orders, setOrders] = useState()
+    // const [orders, setOrders] = useState()
 
-    const fetchData = () => {
-        getOrders()
-            .then(data => setOrders(data))
-    }
+    // const fetchData = () => {
+    //     getOrders()
+    //         .then(data => setOrders(data))
+    // }
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //     fetchData()
+    // }, [])
 
 
     return (

@@ -5,6 +5,7 @@ import FormInput from "../../components/input/FormInput";
 import Button from "../../components/button/Button";
 import Avatar from "../../components/avatar/Avatar";
 import { getCustomer, updateCustomer } from "../../api";
+import { useLocation } from "react-router-dom";
 
 const UserInfo = () => {
 
@@ -19,6 +20,7 @@ const UserInfo = () => {
     });
     const [error, setError] = useState()
     const [status, setStatus] = useState('idle')
+    const location = useLocation()
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -40,6 +42,10 @@ const UserInfo = () => {
         .then(() => {
             //To set data on customers database
             updateCustomer(inputs)
+            //To set address on order object and change the order's status
+            // updateOrder()
+            // updateOrder({customer: inputs.email, status:'On_the_way'})
+            console.log('your order changed to "On the way" status')
         })
         .catch((error) => {
             // An error occurred

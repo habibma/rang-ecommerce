@@ -10,7 +10,6 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate();
 
-    console.log(location);
     const from = location.state?.from || '/profile';
 
     const [signInInputs, setSignIninputs] = useState({

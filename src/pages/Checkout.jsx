@@ -7,7 +7,7 @@ import { addOrder } from "../api";
 
 const Checkout = () => {
 
-    const { cartItems, handleCartItems, handleOrders, orders } = useContext(GlobalContext)
+    const { cartItems, handleCartItems, handleOrders } = useContext(GlobalContext)
 
     const navigate = useNavigate();
 
@@ -32,9 +32,9 @@ const Checkout = () => {
             details: cartItems.map(obj => obj.title),
             price: cartItems.reduce((acc, curr) => acc + curr.price, 0)
         }
-        // addOrder(orderToSave)
+        addOrder(orderToSave)
         handleCartItems({ type: "CLEAN", product: {} }) // to make the cart empty
-        navigate("/profile", { state : {message: "Your order is processing to send buy you should complete your address information!" }});
+        navigate("/profile/info", { state : {message: "Your order is processing to send buy you should complete your address information!" , orderdID: orderToSave.id}});
     }
 
     return (
