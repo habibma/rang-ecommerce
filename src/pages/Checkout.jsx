@@ -24,16 +24,17 @@ const Checkout = () => {
         });
         handleOrders(cartItems); // send the cart items to the ordered list
 
-        const orderToSave =  {
+        const orderToSave = {
             id: `ORDER-${nanoid(4)}`,
-            status: 'On_the_way',
+            customer: "",
+            status: 'Paid',
             date: Date().toString(),
-            title: cartItems.map(obj => obj.title),
+            details: cartItems.map(obj => obj.title),
             price: cartItems.reduce((acc, curr) => acc + curr.price, 0)
         }
-        addOrder(orderToSave)
+        // addOrder(orderToSave)
         handleCartItems({ type: "CLEAN", product: {} }) // to make the cart empty
-        navigate("/profile/orders");
+        navigate("/profile", { state : {message: "Your order is processing to send buy you should complete your address information!" }});
     }
 
     return (

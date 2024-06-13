@@ -138,7 +138,6 @@ const UserInfo = () => {
         },
     ]
 
-    console.log(status);
     return (
         <div className="row">
             <h3 className="pro-heading">Personal Information</h3>

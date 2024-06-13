@@ -128,7 +128,7 @@ const GlobalState = ({ children }) => {
                 const user = userCredential.user;
                 // console.log(user.email)
                 setCurrentUser({ user, isLoggedIn: true })
-                navigate(`profile/info`)
+                navigate(`profile`)
             })
             .catch((error) => {
                 const errorCode = error.code;

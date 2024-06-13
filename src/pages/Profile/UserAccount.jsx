@@ -1,12 +1,19 @@
 import { useContext, useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 import { GlobalContext } from "../../context/Context"
 import Button from "../../components/button/Button"
 import { getOrders } from "../../api"
 
 export const Dashboard = () => {
+
+    const location = useLocation()
+
     return (
         <div className="row">
             <h3 className="pro-heading">Dashboard</h3>
+            <div>
+                {location.state?.message && <p className="warning">{location.state.message} <Link to="info">here</Link></p>}
+            </div>
         </div>
     )
 }
@@ -25,7 +32,7 @@ export const Orders = () => {
 
     useEffect(() => {
         fetchData()
-    }, [orders])
+    }, [])
 
 
     return (

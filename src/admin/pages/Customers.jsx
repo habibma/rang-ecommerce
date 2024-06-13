@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import DataTable from '../DataTable'
 import user from '../../assets/imgs/user.png'
 import { deleteCustomer, getCustomers } from '../../api'

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Add from '../Add'
 import DataTable from '../DataTable';
 import { getOrders } from '../../api';
 
@@ -24,8 +23,15 @@ const Orders = () => {
     {
       field: 'details',
       headerName: 'Products',
-      maxWidth: 180,
+      width: 180,
       type: 'array',
+      editable: false,
+    },
+    {
+      field: 'customer',
+      headerName: 'Customer',
+      maxWidth: 180,
+      type: 'string',
       editable: false,
     },
     {
@@ -39,7 +45,7 @@ const Orders = () => {
       field: 'date',
       headerName: 'Date',
       type: 'string',
-      maxWidth: 110,
+      width: 180,
       editable: false,
     },
 

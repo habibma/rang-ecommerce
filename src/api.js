@@ -114,3 +114,8 @@ export const getOrders = async () => {
 
     return orders;
 }
+
+// export const addUserOrder = async (order, userID) => {
+//  const orderRef = doc(db, 'customers', userID, )
+//  await setDoc(orderRef, data);
+// }
