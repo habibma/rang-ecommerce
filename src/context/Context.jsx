@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState, useEffect, useRef } from "react";
+import React, { createContext, useReducer, useState, useEffect, useRef, useCallback } from "react";
 import { nanoid } from 'nanoid';
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword, signOut, updateProfile, updatePassword } from "firebase/auth";
@@ -90,9 +90,9 @@ const GlobalState = ({ children }) => {
     // Cart page and product
     const [cartItems, dispatch] = useReducer(reducer, [])
 
-    const handleCartItems = input => {
+    const handleCartItems = useCallback(input => {
         dispatch({ type: input.type, product: input.product })
-    }
+    },[dispatch])
 
 
     // Login page
@@ -166,9 +166,9 @@ const GlobalState = ({ children }) => {
 
     const [favorites, setFavorites] = useReducer(reducer, [])
 
-    const handleFavorites = input => {
+    const handleFavorites = useCallback( input => {
         setFavorites({ type: input.type, product: input.product })
-    }
+    }, [setFavorites])
 
 
     // Setting Page
