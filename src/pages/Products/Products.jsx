@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useMemo } from 'react'
+import React, { useState, useContext, useEffect, useMemo, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
 import './products.scss'
@@ -30,7 +30,7 @@ const Products = () => {
   }, [products])
 
 
-  function handleChange({ target }) {
+  const handleChange = useCallback(({ target }) => {
     const { name, value } = target;
     if (!value) {
       setSearchParams({})
@@ -42,7 +42,7 @@ const Products = () => {
       })
       setPrice(prevState => ({ ...prevState, [name]: +value }))
     }
-  }
+  },[setSearchParams, setPrice])
 
   const priceMinFilter = +searchParams.get('atLeast')
   const priceMaxFilter = +searchParams.get('atMost')
