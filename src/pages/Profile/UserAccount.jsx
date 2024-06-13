@@ -78,7 +78,7 @@ export const Setting = () => {
     const handleLogOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
-            localStorage.setItem('inLoggedIn', false)
+            localStorage.removeItem('isLoggedIn')
             navigate('/')
         }).catch((error) => {
             // An error happened.

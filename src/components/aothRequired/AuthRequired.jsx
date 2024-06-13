@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { GlobalContext } from '../../context/Context';
 
 const AuthRequired = () => {
 
@@ -8,9 +7,8 @@ const AuthRequired = () => {
 
     const { pathname } = useLocation()
 
-
     if (!auth) {
-        return <Navigate to='login' state={{message: "You must login first", from: pathname}} replace />
+        return <Navigate to='/login' state={{message: "You must login first", from: pathname}} replace />
     }
 
     return (
