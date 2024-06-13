@@ -60,8 +60,6 @@ const reducer = (state, action) => {
 
 const GlobalState = ({ children }) => {
 
-    const navigate = useNavigate();
-
 
     // Products Page
     const [products, setProducts] = useState([]);
@@ -96,52 +94,52 @@ const GlobalState = ({ children }) => {
 
 
     // Login page
-    const [signInInputs, setSignIninputs] = useState({
-        username: "",
-        password: "",
-    });
+    // const [signInInputs, setSignIninputs] = useState({
+    //     username: "",
+    //     password: "",
+    // });
 
-    const handleSignIn = ({ target }) => {
-        const { value, name } = target;
-        setSignIninputs(prevState => {
-            return ({
-                ...prevState,
-                [name]: value
-            })
-        })
-    }
-    const passwordRef = useRef(null)
-    const usernameRef = useRef(null)
+    // const handleSignIn = ({ target }) => {
+    //     const { value, name } = target;
+    //     setSignIninputs(prevState => {
+    //         return ({
+    //             ...prevState,
+    //             [name]: value
+    //         })
+    //     })
+    // }
+    // const passwordRef = useRef(null)
+    // const usernameRef = useRef(null)
 
-    const [currentUser, setCurrentUser] = useState({ user: "", isLoggedIn: false })
-    const [error, setError] = useState();
+    // const [currentUser, setCurrentUser] = useState({ user: "", isLoggedIn: false })
+    // const [error, setError] = useState();
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        // setSignIninputs({ username: "", password: "" })
+    // const handleSubmit = event => {
+    //     event.preventDefault();
+    //     // setSignIninputs({ username: "", password: "" })
 
 
-        //firebase check
-        signInWithEmailAndPassword(auth, signInInputs.username, signInInputs.password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                // console.log(user.email)
-                setCurrentUser({ user, isLoggedIn: true })
-                navigate(`profile`)
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                if (errorCode === "auth/invalid-email") {
-                    usernameRef.current.focus();
-                }
-                if (errorCode === "auth/missing-password") {
-                    passwordRef.current.focus();
-                }
-                setError(errorMessage)
-            });
-    }
+    //     //firebase check
+    //     signInWithEmailAndPassword(auth, signInInputs.username, signInInputs.password)
+    //         .then((userCredential) => {
+    //             // Signed in
+    //             const user = userCredential.user;
+    //             // console.log(user.email)
+    //             setCurrentUser({ user, isLoggedIn: true })
+    //             navigate(`profile`)
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             if (errorCode === "auth/invalid-email") {
+    //                 usernameRef.current.focus();
+    //             }
+    //             if (errorCode === "auth/missing-password") {
+    //                 passwordRef.current.focus();
+    //             }
+    //             setError(errorMessage)
+    //         });
+    // }
 
 
     //Orders Page
@@ -186,18 +184,18 @@ const GlobalState = ({ children }) => {
     const value = {
         cartItems,
         handleCartItems,
-        signInInputs,
-        handleSignIn,
-        handleSubmit,
+        // signInInputs,
+        // handleSignIn,
+        // handleSubmit,
         itemNumbers: cartItems.length,
         orders,
         handleOrders,
         handleLogOut,
-        currentUser,
-        setCurrentUser,
-        error,
-        usernameRef,
-        passwordRef,
+        // currentUser,
+        // setCurrentUser,
+        // error,
+        // usernameRef,
+        // passwordRef,
         favorites,
         handleFavorites,
         products,

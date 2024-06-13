@@ -1,14 +1,63 @@
-import React, { useContext } from 'react';
-import { GlobalContext } from '../context/Context';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import FormInput from '../components/input/FormInput';
 import Button from '../components/button/Button';
+import { auth } from '../firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
 
-    const { signInInputs, handleSignIn, isLoggedIn, handleSubmit, error, usernameRef, passwordRef } = useContext(GlobalContext)
-
     const location = useLocation()
+    const navigate = useNavigate();
+
+    console.log(location);
+    const from = location.state?.from || '/profile';
+
+    const [signInInputs, setSignIninputs] = useState({
+        username: "",
+        password: "",
+    });
+
+    const handleSignIn = ({ target }) => {
+        const { value, name } = target;
+        setSignIninputs(prevState => {
+            return ({
+                ...prevState,
+                [name]: value
+            })
+        })
+    }
+    const passwordRef = useRef(null)
+    const usernameRef = useRef(null)
+
+    const [error, setError] = useState();
+
+    const isLoggedIn = localStorage.getItem('isLoggedIn')
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        // setSignIninputs({ username: "", password: "" })
+
+        //firebase check
+        signInWithEmailAndPassword(auth, signInInputs.username, signInInputs.password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                localStorage.setItem('isLoggedIn', true)
+                navigate(from, { replace: true })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                if (errorCode === "auth/invalid-email") {
+                    usernameRef.current.focus();
+                }
+                if (errorCode === "auth/missing-password") {
+                    passwordRef.current.focus();
+                }
+                setError(errorMessage)
+            });
+    }
 
     const fileds = [
         {
