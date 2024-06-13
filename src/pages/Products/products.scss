@@ -117,3 +117,11 @@ $sm: 480px;
     width: 100%;
   }
 }
+
+// Rating 
+
+.review {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}

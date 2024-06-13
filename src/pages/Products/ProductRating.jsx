@@ -1,14 +1,14 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom'
+import RatingReview from '../../components/review/RatingReview'
 
 const ProductRating = () => {
 
     const { rating } = useOutletContext()
 
     return (
-        <section>
-            <p><b>Rate:</b> {rating.rate}</p>
-            <p><b>Count:</b> {rating.count}</p>
+        <section className='review'>
+            <b>Rate:</b> {<RatingReview rating={rating.rate} />} ({rating.count})
         </section>
     )
 }
