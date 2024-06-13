@@ -1,15 +1,16 @@
 import React, { useContext } from 'react'
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
 
 const AuthRequired = () => {
 
-    const { currentUser } = useContext(GlobalContext)
+    const auth = localStorage.getItem('isLoggedIn');
 
-    const auth = currentUser.isLoggedIn;
+    const { pathname } = useLocation()
+
 
     if (!auth) {
-        return <Navigate to='login' state={{message: "You must login first"}} />
+        return <Navigate to='login' state={{message: "You must login first", from: pathname}} replace />
     }
 
     return (

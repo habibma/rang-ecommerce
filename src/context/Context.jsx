@@ -170,32 +170,15 @@ const GlobalState = ({ children }) => {
 
 
     // Setting Page
-    const handleLogOut = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            setCurrentUser(prevState => ({ ...prevState, isLoggedIn: false }))
-        }).catch((error) => {
-            // An error happened.
-            console.log(error)
-        });
-    }
+    
 
 
     const value = {
         cartItems,
         handleCartItems,
-        // signInInputs,
-        // handleSignIn,
-        // handleSubmit,
         itemNumbers: cartItems.length,
         orders,
         handleOrders,
-        handleLogOut,
-        // currentUser,
-        // setCurrentUser,
-        // error,
-        // usernameRef,
-        // passwordRef,
         favorites,
         handleFavorites,
         products,

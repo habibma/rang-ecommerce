@@ -1,15 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom';
 import './profile.scss'
-import { GlobalContext } from '../../context/Context';
 
 const UserProfile = () => {
 
-  const { currentUser } = useContext(GlobalContext)
-
   return (
     <>
-      <div className='row'>Hello, <b>{currentUser.user.displayName}</b></div>
+      {/* <div className='row'>Hello, <b>{currentUser.user.displayName}</b></div> */}
       <section className='profile-section row'>
         <aside className='profile-section--sidebar'>
           <NavLink

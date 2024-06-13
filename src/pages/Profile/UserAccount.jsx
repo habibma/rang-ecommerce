@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { GlobalContext } from "../../context/Context"
 import Button from "../../components/button/Button"
 import { getOrders } from "../../api"
+import { signOut } from "firebase/auth"
+import { auth } from "../../firebase"
 
 export const Dashboard = () => {
 
@@ -70,7 +72,19 @@ export const Orders = () => {
 
 
 export const Setting = () => {
-    const { handleLogOut } = useContext(GlobalContext)
+    
+    const navigate = useNavigate()
+
+    const handleLogOut = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            localStorage.setItem('inLoggedIn', false)
+            navigate('/')
+        }).catch((error) => {
+            // An error happened.
+            console.log(error)
+        });
+    }
 
     return (
         <div className="row">
