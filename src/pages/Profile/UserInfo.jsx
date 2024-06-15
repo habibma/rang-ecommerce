@@ -6,6 +6,7 @@ import Button from "../../components/button/Button";
 import Avatar from "../../components/avatar/Avatar";
 import { getCustomer, updateCustomer } from "../../api";
 import { useLocation } from "react-router-dom";
+import ProfilePicture from "../../components/profilePicture/ProfilePicture";
 
 const UserInfo = () => {
 
@@ -21,6 +22,7 @@ const UserInfo = () => {
     const [error, setError] = useState()
     const [status, setStatus] = useState('idle')
     const location = useLocation()
+    // console.log(location);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -37,30 +39,28 @@ const UserInfo = () => {
 
         setStatus('submitting')
 
-        //To update email
         updateProfile(auth.currentUser, inputs)
-        .then(() => {
-            //To set data on customers database
-            updateCustomer(inputs)
-            //To set address on order object and change the order's status
-            // updateOrder()
-            // updateOrder({customer: inputs.email, status:'On_the_way'})
-            console.log('your order changed to "On the way" status')
-        })
-        .catch((error) => {
-            // An error occurred
-            setError(error)
-        })
-        .finally(() => setStatus('idle')
-        );
+            .then(() => {
+                //To set data on customers database
+                updateCustomer({ ...inputs, email: auth.currentUser.email })
+                //To set address on order object and change the order's status
+                // updateOrder()
+                // updateOrder({customer: inputs.email, status:'On_the_way'})
+                // console.log('your order changed to "On the way" status')
+            })
+            .catch((error) => {
+                // An error occurred
+                setError(error)
+            })
+            .finally(() => setStatus('idle')
+            );
 
     }
 
-    //to show user data as default values of info page
+    //to show user data as default values of inputs
     const user = auth.currentUser;
     useEffect(() => {
         if (user !== null) {
-            // const displayName = user.displayName;
             const email = user.email;
 
             getCustomer(email)
@@ -75,7 +75,7 @@ const UserInfo = () => {
             type: 'text',
             placeholder: 'First Name',
             errorMessage: "Name should be 2-16 Characters",
-            required: false,
+            required: true,
             pattern: "^[A-Za-z]{2,16}$",
             label: 'First Name'
         },
@@ -85,7 +85,7 @@ const UserInfo = () => {
             type: 'text',
             placeholder: 'Last Name',
             errorMessage: "Name should be 2-30 Character long",
-            required: false,
+            required: true,
             pattern: "^[A-Za-z]{2,30} ?$",
             label: 'Last Name'
         },
@@ -97,7 +97,8 @@ const UserInfo = () => {
             errorMessage: "It should be a valid email address!",
             pattern: '!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i',
             required: false,
-            label: 'Email'
+            label: 'Email',
+            disabled: true
         },
     ]
 
@@ -109,7 +110,7 @@ const UserInfo = () => {
             placeholder: 'City',
             errorMessage: "It  should be 2-30 Character long!",
             pattern: "^[A-Za-z]{2,30}$",
-            required: false,
+            required: true,
             label: 'City'
         },
         {
@@ -118,18 +119,19 @@ const UserInfo = () => {
             type: 'text',
             placeholder: 'Street',
             errorMessage: "It  should be 2-30 Character long!",
-            // pattern: "^[A-Za-z]{2,30}$",
-            required: false,
+            pattern: "^[A-Za-z]{2,30}$",
+            required: true,
             label: 'Street'
         },
         {
             id: 'number',
             name: 'number',
-            type: 'number',
+            type: 'text',
+            inputMode: "numeric",
             placeholder: 'Number',
-            // errorMessage: "It  should be 2-30 Character long!",
-            // pattern: "^[A-Za-z]{2,30}$",
-            required: false,
+            errorMessage: "It  should be 1-30 Character long!",
+            pattern: "^[0-9]{2,30}$",
+            required: true,
             label: 'Number'
         },
         {
@@ -137,9 +139,9 @@ const UserInfo = () => {
             name: 'postalCode',
             type: 'text',
             placeholder: 'Postal Code',
-            // errorMessage: "It  should be 2-30 Character long!",
-            // pattern: "^[A-Za-z]{2,30}$",
-            required: false,
+            errorMessage: "It  should be 2-30 Character long!",
+            pattern: "^[0-9]{2,30}$",
+            required: true,
             label: 'Postal Code'
         },
     ]
@@ -150,6 +152,7 @@ const UserInfo = () => {
             <div className="profile-picture">
                 <Avatar>{user.displayName}</Avatar>
             </div>
+
             <form className='form' onSubmit={handleSubmit}>
                 <fieldset className="fieldset">
                     <legend>Identity</legend>
@@ -163,7 +166,7 @@ const UserInfo = () => {
                         <FormInput key={filed.id} {...filed} value={inputs[filed.name]} onChange={handleChange} />
                     ))}
                 </fieldset>
-                <Button type="secondary" disabled={status === "submitting"}>{status === 'submitting'? 'Submitting...' : 'Save Changes'}</Button>
+                <Button type="secondary" disabled={status === "submitting"}>{status === 'submitting' ? 'Submitting...' : 'Save Changes'}</Button>
                 {error && <p>{error}</p>}
             </form>
         </div >

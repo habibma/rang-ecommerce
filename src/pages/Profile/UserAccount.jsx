@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { GlobalContext } from "../../context/Context"
 import Button from "../../components/button/Button"
 import { getOrders } from "../../api"
 import { signOut } from "firebase/auth"
 import { auth } from "../../firebase"
+import ProfilePicture from "../../components/profilePicture/ProfilePicture"
 
 export const Dashboard = () => {
 
@@ -13,6 +14,8 @@ export const Dashboard = () => {
     return (
         <div className="row">
             <h3 className="pro-heading">Dashboard</h3>
+            <ProfilePicture />
+
             <div>
                 {location.state?.message && <p className="warning">{location.state.message} <Link to="info">here</Link></p>}
             </div>
@@ -78,7 +81,6 @@ export const Setting = () => {
     const handleLogOut = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
-            localStorage.removeItem('isLoggedIn')
             navigate('/')
         }).catch((error) => {
             // An error happened.

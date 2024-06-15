@@ -5,8 +5,6 @@ const ModalContent = ({ children }) => {
 
     const { open, toggleOpen } = useContext(ModalContext)
 
-
-
     useEffect(() => {
         const modal = document.getElementById("modal");
 

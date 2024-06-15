@@ -65,6 +65,7 @@ export const addCustomer = async (customer) => {
 }
 
 export const updateCustomer = async (customer) => {
+    console.log(customer)
     const customerRef = doc(db, "customers", customer.email);
     await updateDoc(customerRef, customer);
 }
@@ -124,3 +125,6 @@ export const getOrders = async () => {
 //  const orderRef = doc(db, 'customers', userID, )
 //  await setDoc(orderRef, data);
 // }
+
+
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
