@@ -1,6 +1,8 @@
 import { nanoid } from "nanoid"
-import { db } from "./firebase"
+import { db, storage } from "./firebase"
 import { getDocs, collection, doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore/lite"
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
+import { updateProfile } from "firebase/auth"
 
 export const getCategories = async () => {
     const res = await fetch('https://fakestoreapi.com/products/categories')
@@ -127,4 +129,17 @@ export const getOrders = async () => {
 // }
 
 
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
+export const upload = async (file, currentUser, setLoading) => {
+
+    const fileRef = ref(storage, currentUser.uid + '.png',)
+
+    setLoading("uploading")
+
+    const snapshot = await uploadBytes(fileRef, file)
+    const photoURL = await getDownloadURL(fileRef)
+
+    updateProfile(currentUser, {photoURL})
+
+    setLoading('idle')
+    alert('file uploaded')
+}

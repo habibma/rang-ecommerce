@@ -49,7 +49,6 @@
 
 
 // Range Input
-
 .range-input {
   display: flex;
   align-items: center;
@@ -119,4 +118,38 @@
     }
   }
 
+}
+
+// file input
+.file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+}
+
+label[for=file] {
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 1em;
+  font-weight: 600;
+  color: #27201a;
+  background-color: #dcb;
+  display: inline-block;
+  transition: 200ms;
+
+  &:focus,
+  &:hover {
+    background-color: #27201a;
+    color: #dcb;
+    cursor: pointer;
+  }
+
+  &:focus {
+    border: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
 }

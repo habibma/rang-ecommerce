@@ -1,8 +1,11 @@
-import { auth } from '../../firebase';
 import React from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { auth } from '../../firebase';
 
 const AuthRequired = () => {
+
+    const currentUser = useAuth()
 
     const { pathname } = useLocation()
 
@@ -11,7 +14,7 @@ const AuthRequired = () => {
     }
 
     return (
-        <Outlet context={{user: auth.currentUser.displayName || auth.currentUser.email}} />
+        <Outlet context={{user: currentUser.displayName || currentUser.email }} />
     )
 }
 

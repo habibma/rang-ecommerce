@@ -150,7 +150,7 @@ const UserInfo = () => {
         <div className="row">
             <h3 className="pro-heading">Personal Information</h3>
             <div className="profile-picture">
-                <Avatar>{user.displayName}</Avatar>
+                <ProfilePicture />
             </div>
 
             <form className='form' onSubmit={handleSubmit}>

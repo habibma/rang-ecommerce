@@ -14,8 +14,6 @@ export const Dashboard = () => {
     return (
         <div className="row">
             <h3 className="pro-heading">Dashboard</h3>
-            <ProfilePicture />
-
             <div>
                 {location.state?.message && <p className="warning">{location.state.message} <Link to="info">here</Link></p>}
             </div>
