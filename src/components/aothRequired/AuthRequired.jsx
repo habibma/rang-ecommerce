@@ -1,18 +1,8 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase';
-import React, { useState } from 'react'
+import React from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 const AuthRequired = () => {
-
-    const [uid, setUid] = useState()
-
-
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //         setUid(user.uid);
-    //     }
-    // });
 
     const { pathname } = useLocation()
 
@@ -21,7 +11,7 @@ const AuthRequired = () => {
     }
 
     return (
-        <Outlet context={{}}/>
+        <Outlet context={{user: auth.currentUser.displayName || auth.currentUser.email}} />
     )
 }
 

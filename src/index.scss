@@ -142,6 +142,10 @@ select {
     display: block;
   }
 
+  .input:disabled {
+    color: #5a5a5a;
+  }
+
   button[type="submit"] {
     width: 100%;
   }

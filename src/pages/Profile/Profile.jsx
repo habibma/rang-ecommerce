@@ -1,12 +1,14 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useOutletContext } from 'react-router-dom';
 import './profile.scss'
 
 const UserProfile = () => {
 
+  const { user } = useOutletContext()
+
   return (
     <>
-      {/* <div className='row'>Hello, <b>{currentUser.user.displayName}</b></div> */}
+      <div className='row'>Hello, <b>{user}</b></div>
       <section className='profile-section row'>
         <aside className='profile-section--sidebar'>
           <NavLink
