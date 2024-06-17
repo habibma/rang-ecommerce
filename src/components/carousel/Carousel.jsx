@@ -26,8 +26,6 @@ const Carousel = ({ data }) => {
                 return <picture
                     key={index}
                     className={slide === index ? 'slide' : 'slide-hidden'}
-                    // src={item.src}
-                    // alt={item.alt}
                     >
                         <source media="(max-width: 480px)" srcSet={item.src_sm} type="image/jpg"/>
                         <source media="(max-width: 768px)" srcSet={item.src_md} type="image/jpg"/>
