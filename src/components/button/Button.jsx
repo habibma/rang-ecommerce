@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './button.scss'
 
 const Button = ({ type, children, ...otherProps }) => {
     let typeClass = type ? `btn-${type}` : "";
-
-    console.log(otherProps)
 
     return (
         <button
@@ -16,4 +14,4 @@ const Button = ({ type, children, ...otherProps }) => {
     )
 }
 
-export default Button  
+export default Button

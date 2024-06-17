@@ -23,7 +23,19 @@ const Carousel = ({ data }) => {
                 </svg>
             </span>
             {data.map((item, index) => {
-                return <Image key={index} className={slide === index ? 'slide' : 'slide-hidden'} src={item.src} alt={item.alt}></Image>
+                return <picture
+                    key={index}
+                    className={slide === index ? 'slide' : 'slide-hidden'}
+                    // src={item.src}
+                    // alt={item.alt}
+                    >
+                        <source media="(max-width: 480px)" srcSet={item.src_sm} type="image/jpg"/>
+                        <source media="(max-width: 768px)" srcSet={item.src_md} type="image/jpg"/>
+                        <source media="(max-width: 1024px)" srcSet={item.src_lg} type="image/jpg"/>
+                        <source media="(max-width: 1200px)" srcSet={item.src_xl} type="image/jpg"/>
+                        <source media="(max-width: 1400px)" srcSet={item.src_xxl} type="image/jpg"/>
+                        <img src={item.src} alt={item.alt}/>
+                    </picture>
             })}
             <span onClick={nextSlide}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="arrow arrow-right">
