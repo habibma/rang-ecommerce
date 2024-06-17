@@ -32,7 +32,7 @@ const Carousel = ({ data }) => {
                         <source media="(max-width: 1024px)" srcSet={item.src_lg} type="image/jpg"/>
                         <source media="(max-width: 1200px)" srcSet={item.src_xl} type="image/jpg"/>
                         <source media="(max-width: 1400px)" srcSet={item.src_xxl} type="image/jpg"/>
-                        <img src={item.src} alt={item.alt}/>
+                        <img src={item.src} alt={item.alt} loading='lazy'/>
                     </picture>
             })}
             <span onClick={nextSlide}>
