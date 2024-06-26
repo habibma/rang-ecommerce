@@ -12,14 +12,14 @@ const Login = () => {
 
     const from = location.state?.from || '/profile';
 
-    const [signInInputs, setSignIninputs] = useState({
+    const [formData, setFormData] = useState({
         username: "",
         password: "",
     });
 
-    const handleSignIn = ({ target }) => {
+    const handleChange = ({ target }) => {
         const { value, name } = target;
-        setSignIninputs(prevState => {
+        setFormData(prevState => {
             return ({
                 ...prevState,
                 [name]: value
@@ -35,10 +35,10 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // setSignIninputs({ username: "", password: "" })
+        // setFormData({ username: "", password: "" })
 
         //firebase check
-        signInWithEmailAndPassword(auth, signInInputs.username, signInInputs.password)
+        signInWithEmailAndPassword(auth, formData.username, formData.password)
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
@@ -89,7 +89,7 @@ const Login = () => {
                 {location.state?.message && <h3 className='login-first'>{location.state.message}</h3>}
                 <h2 className='pro-heading'>Sign In</h2>
                 {fileds.map(field => (
-                    <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleSignIn} />
+                    <FormInput ref={field.ref} key={field.id} {...field} value={formData[field.name]} onChange={handleChange} />
                 ))}
                 <Button type='primary'>{isLoggedIn ? 'Log out' : 'Log in'}</Button>
                 <small>New user? <Link to='/signup'>Create an account</Link></small>
