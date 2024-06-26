@@ -8,7 +8,7 @@ const MenuButton = ({ children, shape }) => {
 
     return (
         <Button
-            onClick={toggleOpen}
+            onFocus={toggleOpen}
             onBlur={!focused && open ? toggleOpen : undefined}
         >
             {children}
