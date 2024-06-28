@@ -28,27 +28,18 @@ const SignUp = () => {
         })
     }
 
-    const clearForm = () => {
-        setFormData({
-            email: "",
-            password: "",
-            confirmPassword: ""
-        })
-    }
-
     const handleSubmit = event => {
         event.preventDefault();
 
         createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
                 // const user = userCredential.user;
-                clearForm();
                 //to add customer to customers database
                 addCustomer({
                     id: `ID-${nanoid(4)}`,
                     email: formData.email
                 })
-                navigate('/login') // Redirect to the login page after successful signup
+                navigate('/login', {state :{message: 'Now you can log in to your profile'}}) // Redirect to the login page after successful signup
             })
             .catch((error) => {
                 // const errorCode = error.code;
