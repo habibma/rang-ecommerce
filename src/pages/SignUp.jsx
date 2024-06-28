@@ -11,7 +11,7 @@ const SignUp = () => {
 
     const navigate = useNavigate()
 
-    const [inputs, setSignUpinputs] = useState({
+    const [formData, setFormData] = useState({
         email: "",
         password: "",
         confirmPassword: ""
@@ -20,7 +20,7 @@ const SignUp = () => {
 
     const handleChange = ({ target }) => {
         const { value, name } = target;
-        setSignUpinputs(prevState => {
+        setFormData(prevState => {
             return ({
                 ...prevState,
                 [name]: value
@@ -29,7 +29,7 @@ const SignUp = () => {
     }
 
     const clearForm = () => {
-        setSignUpinputs({
+        setFormData({
             email: "",
             password: "",
             confirmPassword: ""
@@ -39,14 +39,14 @@ const SignUp = () => {
     const handleSubmit = event => {
         event.preventDefault();
 
-        createUserWithEmailAndPassword(auth, inputs.email, inputs.password)
+        createUserWithEmailAndPassword(auth, formData.email, formData.password)
             .then((userCredential) => {
                 // const user = userCredential.user;
                 clearForm();
                 //to add customer to customers database
                 addCustomer({
                     id: `ID-${nanoid(4)}`,
-                    email: inputs.email
+                    email: formData.email
                 })
                 navigate('/login') // Redirect to the login page after successful signup
             })
@@ -95,7 +95,7 @@ const SignUp = () => {
             placeholder: 'Confirm Pssword',
             errorMessage: "Passwords don't match!",
             required: true,
-            pattern: inputs.password,
+            pattern: formData.password,
             label: 'Confirm Pssword'
         },
     ]
@@ -105,7 +105,7 @@ const SignUp = () => {
             <form className='form' onSubmit={handleSubmit}>
                 <h2 className='pro-heading'>Register</h2>
                 {fields.map(field => (
-                    <FormInput key={field.id} {...field} value={inputs[field.name]} onChange={handleChange} />
+                    <FormInput key={field.id} {...field} value={formData[field.name]} onChange={handleChange} />
                 ))}
                 <Button type='primary'>Submit</Button>
                 <small>Already have an account? <Link to='/login'>Log In</Link></small>
