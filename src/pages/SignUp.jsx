@@ -49,16 +49,6 @@ const SignUp = () => {
     }
 
     const fields = [
-        // {
-        //     id: 'username',
-        //     name: 'username',
-        //     type: 'text',
-        //     placeholder: 'Username',
-        //     errorMessage: "Username should be 3-16 charachter and not included any special charachter!",
-        //     required: true,
-        //     pattern: "^[A-Za-z0-9]{3,16}$",
-        //     label: 'Username'
-        // },
         {
             id: 'email',
             name: 'email',
