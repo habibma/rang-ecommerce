@@ -3,14 +3,12 @@ import { auth } from '../../firebase'
 import { updateProfile } from "firebase/auth";
 import FormInput from "../../components/input/FormInput";
 import Button from "../../components/button/Button";
-import Avatar from "../../components/avatar/Avatar";
-import { getCustomer, updateCustomer } from "../../api";
-import { useLocation } from "react-router-dom";
 import ProfilePicture from "../../components/profilePicture/ProfilePicture";
+import { getCustomer, updateCustomer } from "../../api";
 
 const UserInfo = () => {
 
-    const [inputs, setInputs] = useState({
+    const [formData, setFormData] = useState({
         displayName: "",
         lastName: "",
         email: "",
@@ -21,12 +19,10 @@ const UserInfo = () => {
     });
     const [error, setError] = useState()
     const [status, setStatus] = useState('idle')
-    const location = useLocation()
-    // console.log(location);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setInputs(prevState => {
+        setFormData(prevState => {
             return {
                 ...prevState,
                 [name]: value
@@ -39,13 +35,13 @@ const UserInfo = () => {
 
         setStatus('submitting')
 
-        updateProfile(auth.currentUser, inputs)
+        updateProfile(auth.currentUser, formData)
             .then(() => {
                 //To set data on customers database
-                updateCustomer({ ...inputs, email: auth.currentUser.email })
+                updateCustomer({ ...formData, email: auth.currentUser.email })
                 //To set address on order object and change the order's status
                 // updateOrder()
-                // updateOrder({customer: inputs.email, status:'On_the_way'})
+                // updateOrder({customer: formData.email, status:'On_the_way'})
                 // console.log('your order changed to "On the way" status')
             })
             .catch((error) => {
@@ -57,14 +53,13 @@ const UserInfo = () => {
 
     }
 
-    //to show user data as default values of inputs
+    //to show user data as default values of formData
     const user = auth.currentUser;
     useEffect(() => {
         if (user !== null) {
             const email = user.email;
-
             getCustomer(email)
-                .then(data => setInputs(prevState => ({ ...prevState, ...data })))
+                .then(data => setFormData(prevState => ({ ...prevState, ...data })))
         }
     }, [user])
 
@@ -157,13 +152,13 @@ const UserInfo = () => {
                 <fieldset className="fieldset">
                     <legend>Identity</legend>
                     {identityFields.map(filed => (
-                        <FormInput key={filed.id} {...filed} value={inputs[filed.name]} onChange={handleChange} />
+                        <FormInput key={filed.id} {...filed} value={formData[filed.name]} onChange={handleChange} />
                     ))}
                 </fieldset>
                 <fieldset className="fieldset">
                     <legend>Address</legend>
                     {addressFields.map(filed => (
-                        <FormInput key={filed.id} {...filed} value={inputs[filed.name]} onChange={handleChange} />
+                        <FormInput key={filed.id} {...filed} value={formData[filed.name]} onChange={handleChange} />
                     ))}
                 </fieldset>
                 <Button type="secondary" disabled={status === "submitting"}>{status === 'submitting' ? 'Submitting...' : 'Save Changes'}</Button>
