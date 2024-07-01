@@ -1,6 +1,9 @@
+
 const reducer = (state, action) => {
+
     let newArray = [...state]
     const itemIndex = newArray.findIndex(item => item.id === action.product.id) // to find the index of recieved action object's product within current state
+
     switch (action.type) {
         case "ADD": {
             if (itemIndex === -1) { // in case of lack of recived product
