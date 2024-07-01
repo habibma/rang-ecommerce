@@ -1,11 +1,32 @@
 .profile-picture-box {
 
+    display: grid;
+    justify-items: center;
+    row-gap: 15px;
+
     .avatar {
         width: 150px;
         height: 150px;
     }
 
-    display: grid;
-    justify-items: center;
-    row-gap: 10px;
+    .info {
+        color: gray;
+        font-size: 12px;
+        margin-top: -10px;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-top: -10px;
+    }
+
+    button {
+        background-image: url(../src/assets/imgs/cloud-arrow-up-solid.svg);
+        background-repeat: no-repeat;
+        background-size: 22px 22px;
+        background-position: 10px 4px;
+        padding-left: 40px;
+    }
+
 }
