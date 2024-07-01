@@ -1,8 +1,5 @@
-import React, { createContext, useReducer, useState, useEffect, useRef, useCallback } from "react";
+import React, { createContext, useReducer, useState, useEffect, useCallback } from "react";
 import { nanoid } from 'nanoid';
-import { auth } from '../firebase'
-import { signInWithEmailAndPassword, signOut, updateProfile, updatePassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 export const GlobalContext = createContext(null)
 
@@ -14,7 +11,6 @@ const reducer = (state, action) => {
             if (itemIndex === -1) { // in case of lack of recived product
                 newArray.push({ ...action.product, quantity: 1 }); //adding quantity to the product objet due to soving the bug which show NaN in Total Price
             }
-            // console.log(newArray)
             return newArray;
         }
         case "INCREMENT": {
@@ -60,7 +56,6 @@ const reducer = (state, action) => {
 
 const GlobalState = ({ children }) => {
 
-
     // Products Page
     const [products, setProducts] = useState([]);
     const [select, setSelect] = useState("")
@@ -93,55 +88,6 @@ const GlobalState = ({ children }) => {
     },[dispatch])
 
 
-    // Login page
-    // const [signInInputs, setSignIninputs] = useState({
-    //     username: "",
-    //     password: "",
-    // });
-
-    // const handleSignIn = ({ target }) => {
-    //     const { value, name } = target;
-    //     setSignIninputs(prevState => {
-    //         return ({
-    //             ...prevState,
-    //             [name]: value
-    //         })
-    //     })
-    // }
-    // const passwordRef = useRef(null)
-    // const usernameRef = useRef(null)
-
-    // const [currentUser, setCurrentUser] = useState({ user: "", isLoggedIn: false })
-    // const [error, setError] = useState();
-
-    // const handleSubmit = event => {
-    //     event.preventDefault();
-    //     // setSignIninputs({ username: "", password: "" })
-
-
-    //     //firebase check
-    //     signInWithEmailAndPassword(auth, signInInputs.username, signInInputs.password)
-    //         .then((userCredential) => {
-    //             // Signed in
-    //             const user = userCredential.user;
-    //             // console.log(user.email)
-    //             setCurrentUser({ user, isLoggedIn: true })
-    //             navigate(`profile`)
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             if (errorCode === "auth/invalid-email") {
-    //                 usernameRef.current.focus();
-    //             }
-    //             if (errorCode === "auth/missing-password") {
-    //                 passwordRef.current.focus();
-    //             }
-    //             setError(errorMessage)
-    //         });
-    // }
-
-
     //Orders Page
     const [orders, setOrders] = useState([])
 
@@ -160,17 +106,13 @@ const GlobalState = ({ children }) => {
         });
     };
 
-    // Favorite List
 
+    // Favorite List
     const [favorites, setFavorites] = useReducer(reducer, [])
 
     const handleFavorites = useCallback( input => {
         setFavorites({ type: input.type, product: input.product })
     }, [setFavorites])
-
-
-    // Setting Page
-    
 
 
     const value = {
