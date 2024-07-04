@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-  const [signInInputs, setSignIninputs] = useState({
+  const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleChange = ({ target }) => {
     const { value, name } = target;
-    setSignIninputs(prevState => {
+    setFormData(prevState => {
       return ({
         ...prevState,
         [name]: value
@@ -32,21 +32,28 @@ const Login = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSignIninputs({ username: "", password: "" })
-    setStatus('submitting')
-    loginAdmin(signInInputs)
-      .then(data => {
-        setError(null)
-        localStorage.setItem("loggedIn", true)
-        navigate(from, { replace: true })
-      })
-      .catch(err => {
-        setError(err)
-      }
-      )
-      .finally(() =>
-        setStatus('idle')
-      )
+    if (formData.username === "admin" && formData.password == '123') {
+      localStorage.setItem("loggedIn", true)
+      navigate(from, { replace: true })
+    } else {
+      setError('Wrong input')
+    }
+
+    // setFormData({ username: "", password: "" })
+    // setStatus('submitting')
+    // loginAdmin(formData)
+    //   .then(data => {
+    //     setError(null)
+    //     localStorage.setItem("loggedIn", true)
+    //     navigate(from, { replace: true })
+    //   })
+    //   .catch(err => {
+    //     setError(err)
+    //   }
+    //   )
+    //   .finally(() =>
+    //     setStatus('idle')
+    //   )
   }
 
   const fileds = [
@@ -79,7 +86,7 @@ const Login = () => {
       <form className='form' onSubmit={handleSubmit}>
         <h2 className='pro-heading'>Admin Log In</h2>
         {fileds.map(field => (
-          <FormInput ref={field.ref} key={field.id} {...field} value={signInInputs[field.name]} onChange={handleChange} />
+          <FormInput ref={field.ref} key={field.id} {...field} value={formData[field.name]} onChange={handleChange} />
         ))}
         <Button type='primary' disabled={status === "submitting"}>{status === "submitting" ? "Logging in..." : "Log in"}</Button>
         <small>Username: admin | Pass:123</small>
